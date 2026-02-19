@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initFormHandling();
     initHeroAnimation();
+    initModals();
 });
 
 /* ─── Hero Particles ─── */
@@ -120,9 +121,13 @@ function initMobileMenu() {
 /* ─── Smooth Scroll ─── */
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Skip links that trigger modals
+        if (anchor.hasAttribute('data-modal')) return;
+
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
             const target = document.querySelector(targetId);
             if (target) {
                 const navHeight = document.getElementById('navbar').offsetHeight;
@@ -210,7 +215,7 @@ function initFormHandling() {
 }
 
 /* ─── Active nav link highlighting ─── */
-(function() {
+(function () {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
 
@@ -235,3 +240,52 @@ function initFormHandling() {
         });
     }, { passive: true });
 })();
+
+/* ─── Modals ─── */
+function initModals() {
+    // Open modal on link click
+    document.querySelectorAll('[data-modal]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalId = trigger.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+            }
+        });
+    });
+
+    // Close modal on close button click
+    document.querySelectorAll('.modal-close').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const overlay = btn.closest('.modal-overlay');
+            closeModal(overlay);
+        });
+    });
+
+    // Close modal on overlay click (outside modal content)
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeModal(overlay);
+            }
+        });
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const activeModal = document.querySelector('.modal-overlay.active');
+            if (activeModal) {
+                closeModal(activeModal);
+            }
+        }
+    });
+}
+
+function closeModal(overlay) {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+}
