@@ -289,3 +289,143 @@ function closeModal(overlay) {
     overlay.classList.remove('active');
     document.body.classList.remove('modal-open');
 }
+
+/* ─── Admin Mode ─── */
+function initLogin() {
+    const loginBtn = document.getElementById('adminLoginBtn');
+    if (!loginBtn) return;
+
+    // Create modal logic
+    const modalHtml = `
+        <div class="login-modal" id="loginModal">
+            <div class="login-box">
+                <h3>Logowanie Administratora</h3>
+                <input type="password" id="adminPassword" class="login-input" placeholder="Wprowadź hasło">
+                <div class="login-actions">
+                    <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
+                    <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    const modal = document.getElementById('loginModal');
+    const input = document.getElementById('adminPassword');
+    const confirmBtn = document.getElementById('confirmLogin');
+    const cancelBtn = document.getElementById('cancelLogin');
+
+    loginBtn.addEventListener('click', () => {
+        modal.classList.add('active');
+        input.value = '';
+        input.focus();
+    });
+
+    const attemptLogin = () => {
+        if (input.value === 'admin') {
+            enableAdminMode();
+            modal.classList.remove('active');
+        } else {
+            alert('Nieprawidłowe hasło');
+        }
+    };
+
+    confirmBtn.addEventListener('click', attemptLogin);
+
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') attemptLogin();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.remove('active');
+    });
+}
+
+function enableAdminMode() {
+    document.body.classList.add('admin-mode');
+
+    // Hide login button and show status
+    const loginBtn = document.getElementById('adminLoginBtn');
+    loginBtn.style.display = 'none';
+
+    const status = document.createElement('span');
+    status.className = 'btn-text';
+    status.style.color = 'var(--color-gold)';
+    status.style.cursor = 'default';
+    status.textContent = 'Tryb Administratora';
+    loginBtn.parentNode.appendChild(status);
+
+    // Make content editable
+    const editableSelectors = 'h1, h2, h3, h4, p, span:not(.btn span), li';
+    const elements = document.querySelectorAll(editableSelectors);
+
+    elements.forEach(el => {
+        // Skip elements inside buttons or with specific classes
+        if (el.closest('button') || el.closest('.admin-add-btn')) return;
+        el.setAttribute('contenteditable', 'true');
+    });
+
+    // Add "Add Tile" buttons
+    addTileButtons();
+}
+
+function addTileButtons() {
+    const grids = [
+        { selector: '.mission-grid', type: 'mission' },
+        { selector: '.actions-grid', type: 'action' },
+        { selector: '.news-grid', type: 'news' },
+        { selector: '.about-features', type: 'feature' }
+    ];
+
+    grids.forEach(gridInfo => {
+        const grid = document.querySelector(gridInfo.selector);
+        if (!grid) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'admin-add-btn';
+        btn.textContent = '+ Dodaj kafelek';
+
+        btn.addEventListener('click', () => {
+            const lastCard = grid.querySelector(':scope > div:not(.admin-add-btn)');
+            if (lastCard) {
+                const newCard = lastCard.cloneNode(true);
+
+                // Clear content
+                newCard.querySelectorAll('[contenteditable]').forEach(el => {
+                    if (el.tagName.toLowerCase() === 'h3') el.textContent = 'Nowy Tytuł';
+                    else if (el.tagName.toLowerCase() === 'p') el.textContent = 'Nowy opis...';
+                    else if (el.tagName.toLowerCase() === 'span') el.textContent = 'Nowa etykieta';
+                });
+
+                // Insert before the button (which we will append to the end of the grid logic)
+                // Actually grid layout might need the button to be outside or special.
+                // For simplicity, we append to grid. styling might need adjustment if grid is strict.
+                // CSS Grid handles direct children. The button is currently last child.
+                // We want to insert before the button if it's already there? 
+                // Wait, my css says .admin-add-btn is a block. 
+                // To keep grid layout intact, maybe better to put the button AFTER the grid container in HTML?
+                // But the user asked to add tiles "in places where other ones are".
+                // Let's Insert Before the specific button.
+
+                // If the button is INSIDE the grid (which `appendChild` does), it becomes a grid item.
+                // We want it to be a grid item usually, or a full width one? 
+                // Let's just insert it before the button for now.
+
+                grid.insertBefore(newCard, btn);
+            }
+        });
+
+        grid.appendChild(btn);
+    });
+}
+
+// Add to init
+document.addEventListener('DOMContentLoaded', () => {
+    // ... existing init calls ...
+    initLogin();
+});
