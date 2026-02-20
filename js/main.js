@@ -351,15 +351,8 @@ function initLogin() {
             }
         }
 
-        // 2. Check if it's a raw GitHub Token
-        if (val.startsWith('ghp_') || val.startsWith('github_pat_')) {
-            localStorage.setItem('githubToken', val);
-            enableAdminMode(true);
-            modal.classList.remove('active');
-            showToast('Zalogowano Tokenem', 'info');
-        }
-        // 3. Fallback: Local Admin
-        else if (val === ADMIN_HASH) {
+        // 2. Fallback: Local Admin
+        if (val === ADMIN_HASH) {
             if (window.SITE_CONFIG && window.SITE_CONFIG.auth) {
                 alert('Nieprawidłowe hasło globalne!');
             } else {
@@ -368,7 +361,7 @@ function initLogin() {
                 showToast('Tryb Lokalny', 'info');
             }
         } else {
-            alert('Nieprawidłowe hasło lub token!');
+            alert('Nieprawidłowe hasło!');
         }
     };
 
