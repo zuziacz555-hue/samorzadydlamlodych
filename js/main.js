@@ -291,6 +291,8 @@ function closeModal(overlay) {
 }
 
 /* ─── Admin Mode ─── */
+const ADMIN_HASH = 'admin'; // Still keep 'admin' as a local-only fallback
+
 function initLogin() {
     const loginBtn = document.getElementById('adminLoginBtn');
     if (!loginBtn) return;
@@ -300,7 +302,8 @@ function initLogin() {
         <div class="login-modal" id="loginModal">
             <div class="login-box">
                 <h3>Logowanie Administratora</h3>
-                <input type="password" id="adminPassword" class="login-input" placeholder="Wprowadź hasło">
+                <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">Aby edytować i publikować, podaj Token GitHub. Aby testować lokalnie, wpisz "admin".</p>
+                <input type="password" id="adminPassword" class="login-input" placeholder="Wklej Token GitHub...">
                 <div class="login-actions">
                     <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
                     <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
@@ -316,18 +319,30 @@ function initLogin() {
     const confirmBtn = document.getElementById('confirmLogin');
     const cancelBtn = document.getElementById('cancelLogin');
 
-    loginBtn.addEventListener('click', () => {
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         modal.classList.add('active');
         input.value = '';
         input.focus();
     });
 
     const attemptLogin = () => {
-        if (input.value === 'admin') {
-            enableAdminMode();
+        const val = input.value.trim();
+
+        // Check if it's a GitHub Token
+        if (val.startsWith('ghp_') || val.startsWith('github_pat_')) {
+            localStorage.setItem('githubToken', val);
+            enableAdminMode(true); // true = valid token mode
             modal.classList.remove('active');
+            showToast('Zalogowano Tokenem GitHub', 'info');
+        }
+        // Fallback: Local Admin
+        else if (val === ADMIN_HASH) {
+            enableAdminMode(false); // false = local only
+            modal.classList.remove('active');
+            showToast('Tryb Lokalny (brak publikacji)', 'info');
         } else {
-            alert('Nieprawidłowe hasło');
+            alert('Nieprawidłowy token lub hasło!');
         }
     };
 
@@ -530,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ... (previous code) ...
 
-function enableAdminMode() {
+function enableAdminMode(hasToken) {
     document.body.classList.add('admin-mode');
 
     // Hide login button and show status
@@ -549,25 +564,37 @@ function enableAdminMode() {
             status.className = 'btn-text admin-status';
             status.style.color = 'var(--color-gold)';
             status.style.cursor = 'default';
-            status.textContent = 'Tryb Administratora';
+            status.textContent = hasToken ? 'Admin (Online)' : 'Admin (Lokalnie)';
 
-            // Save Button
+            // SINGLE Save Button
             const saveBtn = document.createElement('button');
             saveBtn.className = 'btn-save';
-            saveBtn.textContent = 'Zapisz (Lokalnie)';
-            saveBtn.title = 'Zapisz zmiany w przeglądarce';
-            saveBtn.onclick = saveChanges;
+            saveBtn.textContent = 'ZAPISZ ZMIANY';
+            saveBtn.title = hasToken ? 'Zapisz lokalnie i opublikuj na GitHub' : 'Zapisz tylko lokalnie (brak tokenu)';
 
-            // Download Button -> Publish Button
-            const pubBtn = document.createElement('button');
-            pubBtn.className = 'btn-github';
-            pubBtn.textContent = 'Opublikuj (Online)';
-            pubBtn.title = 'Wyślij zmiany na serwer (GitHub)';
-            pubBtn.onclick = initPublish;
+            saveBtn.onclick = async () => {
+                // 1. Save Local
+                saveChanges();
+
+                // 2. Publish if token exists
+                if (hasToken) {
+                    const token = localStorage.getItem('githubToken');
+                    if (token) {
+                        try {
+                            await publishToGitHub(token);
+                        } catch (e) {
+                            showToast('Błąd publikacji: ' + e.message, 'error');
+                        }
+                    } else {
+                        showToast('Błąd: Brak tokenu w pamięci!', 'error');
+                    }
+                } else {
+                    showToast('Zapisano tylko lokalnie (brak tokenu)', 'info');
+                }
+            };
 
             toolbar.appendChild(status);
             toolbar.appendChild(saveBtn);
-            toolbar.appendChild(pubBtn);
 
             loginBtn.parentNode.appendChild(toolbar);
         }
@@ -645,57 +672,7 @@ function loadChanges() {
     }
 }
 
-async function initPublish() {
-    let token = localStorage.getItem('githubToken');
-    if (!token) {
-        token = await promptForToken();
-    }
-    if (token) {
-        await publishToGitHub(token);
-    }
-}
 
-function promptForToken() {
-    return new Promise((resolve) => {
-        // Create modal if not exists
-        let modal = document.getElementById('githubTokenModal');
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = 'githubTokenModal';
-            modal.className = 'github-modal';
-            modal.innerHTML = `
-                <div class="github-box">
-                    <h3>Autoryzacja GitHub</h3>
-                    <p>Aby opublikować zmiany, podaj swój Personal Access Token (PAT) z GitHuba.</p>
-                    <input type="password" class="github-input" placeholder="Wklej token tutaj..." id="ghTokenInput">
-                    <div class="github-actions">
-                        <button class="btn-github-cancel">Anuluj</button>
-                        <button class="btn-github-confirm">Zatwierdź</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-
-            modal.querySelector('.btn-github-cancel').onclick = () => {
-                modal.classList.remove('active');
-                resolve(null);
-            };
-
-            modal.querySelector('.btn-github-confirm').onclick = () => {
-                const val = document.getElementById('ghTokenInput').value;
-                if (val) {
-                    localStorage.setItem('githubToken', val);
-                    modal.classList.remove('active');
-                    resolve(val);
-                }
-            };
-        }
-
-        // Clear input and show
-        document.getElementById('ghTokenInput').value = '';
-        modal.classList.add('active');
-    });
-}
 
 function getRepoDetails() {
     // Hardcoded for this specific user/repo as requested
