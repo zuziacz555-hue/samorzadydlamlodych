@@ -1729,7 +1729,8 @@ body.modal-open {
 }
 
 .btn-save,
-.btn-download {
+.btn-github,
+.btn-github-cancel {
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -1739,29 +1740,145 @@ body.modal-open {
     transition: all var(--transition-fast);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .btn-save {
-    background: var(--color-gold);
-    color: var(--color-background);
-}
-
-.btn-save:hover {
-    background: #e5b84c;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(212, 168, 71, 0.3);
-}
-
-.btn-download {
     background: rgba(255, 255, 255, 0.1);
     color: var(--color-white);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.btn-download:hover {
+.btn-save:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: var(--color-white);
     transform: translateY(-2px);
+}
+
+.btn-github {
+    background: var(--color-gold);
+    color: var(--color-background);
+    box-shadow: 0 4px 10px rgba(212, 168, 71, 0.3);
+}
+
+.btn-github:hover {
+    background: #e5b84c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(212, 168, 71, 0.4);
+}
+
+/* GitHub Token Prompt */
+.github-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.95);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+}
+
+.github-modal.active {
+    display: flex;
+}
+
+.github-box {
+    background: var(--color-card-bg);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.github-box h3 {
+    color: var(--color-gold);
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.github-box p {
+    color: var(--color-gray);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.github-input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.github-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.github-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn-github-confirm {
+    background: var(--color-gold);
+    color: var(--color-background);
+    padding: 12px 32px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-github-confirm:hover {
+    background: #e5b84c;
+    transform: translateY(-2px);
+}
+
+.btn-github-cancel {
+    background: transparent;
+    color: var(--color-gray);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 24px;
+}
+
+.btn-github-cancel:hover {
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+/* Spinning Loader */
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid var(--color-background);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Toast Notification */
@@ -1771,14 +1888,22 @@ body.modal-open {
     right: 24px;
     background: var(--color-gold);
     color: var(--color-background);
-    padding: 12px 24px;
-    border-radius: 4px;
+    padding: 16px 32px;
+    border-radius: var(--radius-md);
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 3000;
     transform: translateY(100px);
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-toast.error {
+    background: #ff4444;
+    color: white;
 }
 
 .admin-toast.show {

@@ -521,6 +521,7 @@ function addTileButtons() {
 }
 
 // Add to init
+// Add to init
 document.addEventListener('DOMContentLoaded', () => {
     // ... existing init calls ...
     loadChanges(); // NEW: Load saved changes if any
@@ -553,20 +554,20 @@ function enableAdminMode() {
             // Save Button
             const saveBtn = document.createElement('button');
             saveBtn.className = 'btn-save';
-            saveBtn.textContent = 'Zapisz';
+            saveBtn.textContent = 'Zapisz (Lokalnie)';
             saveBtn.title = 'Zapisz zmiany w przeglądarce';
             saveBtn.onclick = saveChanges;
 
-            // Download Button
-            const dlBtn = document.createElement('button');
-            dlBtn.className = 'btn-download';
-            dlBtn.textContent = 'Pobierz plik';
-            dlBtn.title = 'Pobierz zaktualizowany plik index.html';
-            dlBtn.onclick = downloadFile;
+            // Download Button -> Publish Button
+            const pubBtn = document.createElement('button');
+            pubBtn.className = 'btn-github';
+            pubBtn.textContent = 'Opublikuj (Online)';
+            pubBtn.title = 'Wyślij zmiany na serwer (GitHub)';
+            pubBtn.onclick = initPublish;
 
             toolbar.appendChild(status);
             toolbar.appendChild(saveBtn);
-            toolbar.appendChild(dlBtn);
+            toolbar.appendChild(pubBtn);
 
             loginBtn.parentNode.appendChild(toolbar);
         }
@@ -608,7 +609,7 @@ function saveChanges() {
     });
 
     localStorage.setItem('adminContent', JSON.stringify(data));
-    showToast('Zmiany zapisane pomyślnie!');
+    showToast('Zmiany zapisane lokalnie!');
 }
 
 function loadChanges() {
@@ -637,8 +638,6 @@ function loadChanges() {
         }
 
         // Re-attach event listeners for modals (old and new)
-        // We need to re-run initModals partially or manual attach
-        // Simplest is to just re-run initModals to catch all triggers
         initModals();
 
     } catch (e) {
@@ -646,50 +645,174 @@ function loadChanges() {
     }
 }
 
-function downloadFile() {
-    // Clone document
-    const clone = document.documentElement.cloneNode(true);
-
-    // Clean up Admin UI from clone
-    clone.classList.remove('admin-mode');
-
-    // Remove toolbar
-    const toolbar = clone.querySelector('.admin-toolbar');
-    if (toolbar) toolbar.remove();
-
-    // Show login button again
-    const loginBtn = clone.querySelector('#adminLoginBtn');
-    if (loginBtn) loginBtn.style.display = '';
-
-    // Remove Add/Delete buttons
-    clone.querySelectorAll('.admin-add-btn, .admin-delete-btn').forEach(el => el.remove());
-
-    // Remove contenteditable attributes
-    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-
-    // Create Blob
-    const htmlContent = clone.outerHTML;
-    const blob = new Blob([htmlContent], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'index.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+async function initPublish() {
+    let token = localStorage.getItem('githubToken');
+    if (!token) {
+        token = await promptForToken();
+    }
+    if (token) {
+        await publishToGitHub(token);
+    }
 }
 
-function showToast(msg) {
+function promptForToken() {
+    return new Promise((resolve) => {
+        // Create modal if not exists
+        let modal = document.getElementById('githubTokenModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'githubTokenModal';
+            modal.className = 'github-modal';
+            modal.innerHTML = `
+                <div class="github-box">
+                    <h3>Autoryzacja GitHub</h3>
+                    <p>Aby opublikować zmiany, podaj swój Personal Access Token (PAT) z GitHuba.</p>
+                    <input type="password" class="github-input" placeholder="Wklej token tutaj..." id="ghTokenInput">
+                    <div class="github-actions">
+                        <button class="btn-github-cancel">Anuluj</button>
+                        <button class="btn-github-confirm">Zatwierdź</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            modal.querySelector('.btn-github-cancel').onclick = () => {
+                modal.classList.remove('active');
+                resolve(null);
+            };
+
+            modal.querySelector('.btn-github-confirm').onclick = () => {
+                const val = document.getElementById('ghTokenInput').value;
+                if (val) {
+                    localStorage.setItem('githubToken', val);
+                    modal.classList.remove('active');
+                    resolve(val);
+                }
+            };
+        }
+
+        // Clear input and show
+        document.getElementById('ghTokenInput').value = '';
+        modal.classList.add('active');
+    });
+}
+
+function getRepoDetails() {
+    // Hardcoded for this specific user/repo as requested
+    return {
+        owner: 'zuziacz555-hue',
+        repo: 'samorzadydlamlodych',
+        path: 'index.html',
+        branch: 'master'
+    };
+}
+
+async function publishToGitHub(token) {
+    const { owner, repo, path, branch } = getRepoDetails();
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+
+    showToast('Przygotowywanie...', 'info');
+
+    try {
+        // 1. Get current SHA
+        const getRes = await fetch(apiUrl, {
+            headers: {
+                'Authorization': `token ${token}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        });
+
+        if (!getRes.ok) throw new Error('Nie można połączyć się z GitHubem. Sprawdź token.');
+        const getData = await getRes.json();
+        const sha = getData.sha;
+
+        // 2. Prepare Content
+        showToast('Generowanie pliku...', 'info');
+
+        // Clone document to clean it up
+        const clone = document.documentElement.cloneNode(true);
+        clone.classList.remove('admin-mode', 'modal-open');
+
+        // Remove Admin UI
+        clone.querySelector('.admin-toolbar')?.remove();
+        clone.querySelector('#githubTokenModal')?.remove();
+        clone.querySelector('.admin-toast')?.remove();
+
+        // Restore login button
+        const loginBtn = clone.querySelector('#adminLoginBtn');
+        if (loginBtn) loginBtn.style.display = '';
+
+        // Remove admin elements
+        clone.querySelectorAll('.admin-add-btn, .admin-delete-btn').forEach(el => el.remove());
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+        // Clean up classes
+        clone.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+
+        // Encode to Base64 (UTF-8 safe)
+        const content = clone.outerHTML;
+        const utf8Bytes = new TextEncoder().encode(content);
+        // Browser efficient base64
+        const binaryString = Array.from(utf8Bytes, byte => String.fromCharCode(byte)).join("");
+        const base64Content = btoa(binaryString);
+
+        // 3. Update File
+        showToast('Wysyłanie na serwer...', 'info');
+
+        const putRes = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: `Update content from Admin Mode (${new Date().toLocaleString()})`,
+                content: base64Content,
+                sha: sha,
+                branch: branch
+            })
+        });
+
+        if (!putRes.ok) {
+            const err = await putRes.json();
+            throw new Error(err.message || 'Błąd zapisu');
+        }
+
+        showToast('Sukces! Strona zaktualizowana.');
+
+    } catch (err) {
+        console.error(err);
+        showToast('Błąd: ' + err.message, 'error');
+        // If 401/403, maybe clear token
+        if (err.message.includes('Bad credentials') || err.message.includes('401')) {
+            localStorage.removeItem('githubToken');
+        }
+    }
+}
+
+function showToast(msg, type = 'success') {
     let toast = document.querySelector('.admin-toast');
     if (!toast) {
         toast = document.createElement('div');
         toast.className = 'admin-toast';
         document.body.appendChild(toast);
     }
-    toast.textContent = msg;
+
+    // Reset classes
+    toast.className = 'admin-toast';
+    if (type === 'error') toast.classList.add('error');
+
+    // Add spinner for info
+    if (type === 'info') {
+        toast.innerHTML = `<span class="loader"></span> <span>${msg}</span>`;
+    } else {
+        toast.textContent = msg;
+    }
+
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
+
+    if (type !== 'info') {
+        setTimeout(() => toast.classList.remove('show'), 3000);
+    }
 }
 
