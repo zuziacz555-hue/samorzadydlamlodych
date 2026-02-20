@@ -303,11 +303,11 @@ function initLogin() {
     const modalHtml = `
         <div class="login-modal" id="loginModal">
             <div class="login-box">
-                <h3>Logowanie Administratora (v4)</h3>
+                <h3>Logowanie Administratora</h3>
                 <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
-                    Wpisz hasło "admin" lub swój Token GitHub.
+                    Podaj hasło, aby przejść do trybu edycji.
                 </p>
-                <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
+                <input type="password" id="adminPassword" class="login-input" placeholder="Hasło...">
                 <div class="login-actions">
                     <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
                     <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
@@ -340,11 +340,10 @@ function initLogin() {
                 const decryptedToken = await window.AuthVault.decrypt(window.SITE_CONFIG.auth, val);
 
                 // Success!
-                // FIX: Use localStorage for reliability
                 localStorage.setItem('githubToken', decryptedToken);
                 enableAdminMode(true);
                 modal.classList.remove('active');
-                showToast('Zalogowano Globalnie (v4)!', 'success');
+                showToast('Zalogowano pomyślnie!');
                 return;
             } catch (e) {
                 // Wrong password or decrypt fail
@@ -396,63 +395,31 @@ function enableAdminMode(hasToken) {
     if (loginBtn) {
         loginBtn.style.display = 'none';
 
-        let status = loginBtn.parentNode.querySelector('.admin-status');
-        if (!status) {
-            // Create Toolbar Container
+        if (!loginBtn.parentNode.querySelector('.admin-toolbar')) {
             const toolbar = document.createElement('div');
             toolbar.className = 'admin-toolbar';
-
-            // Status Text
-            status = document.createElement('span');
-            status.className = 'btn-text admin-status';
-            status.style.color = 'var(--color-gold)';
-            status.style.cursor = 'default';
-            status.textContent = hasToken ? 'Admin (Online)' : 'Admin (Lokalnie)';
 
             // SINGLE Save Button
             const saveBtn = document.createElement('button');
             saveBtn.className = 'btn-save';
             saveBtn.textContent = 'ZAPISZ ZMIANY';
-            saveBtn.title = hasToken ? 'Zapisz lokalnie i opublikuj na GitHub' : 'Zapisz tylko lokalnie';
+            saveBtn.title = 'Zapisz i opublikuj zmiany globalnie';
 
             saveBtn.onclick = async () => {
-                // 1. Save Local
                 saveChanges();
-
-                // 2. Publish if token exists
-                if (hasToken) {
-                    // FIX: Check localStorage
-                    const token = localStorage.getItem('githubToken');
-                    if (token) {
-                        try {
-                            await publishToGitHub(token);
-                        } catch (e) {
-                            showToast('Błąd publikacji: ' + e.message, 'error');
-                        }
-                    } else {
-                        // Diagnostic message
-                        showToast('BŁĄD v4: Brak tokenu w localStorage. Zaloguj się ponownie.', 'error');
+                const token = localStorage.getItem('githubToken');
+                if (token) {
+                    try {
+                        await publishToGitHub(token);
+                    } catch (e) {
+                        showToast('Błąd publikacji: ' + e.message, 'error');
                     }
                 } else {
                     showToast('Zapisano tylko lokalnie (brak tokenu)', 'info');
                 }
             };
 
-            toolbar.appendChild(status);
             toolbar.appendChild(saveBtn);
-
-            // SETUP BUTTON (Only if has token)
-            if (hasToken) {
-                const setupBtn = document.createElement('button');
-                setupBtn.className = 'btn-save'; // Reuse style
-                setupBtn.style.marginLeft = '10px';
-                setupBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-                setupBtn.textContent = '⚙️ DOSTĘP GLOBALNY';
-                setupBtn.title = 'Skonfiguruj hasło dla wszystkich urządzeń';
-                setupBtn.onclick = setupGlobalAccess;
-                toolbar.appendChild(setupBtn);
-            }
-
             loginBtn.parentNode.appendChild(toolbar);
         }
     }
