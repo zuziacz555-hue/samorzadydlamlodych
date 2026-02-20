@@ -351,34 +351,69 @@ function enableAdminMode() {
 
     // Hide login button and show status
     const loginBtn = document.getElementById('adminLoginBtn');
-    loginBtn.style.display = 'none';
+    if (loginBtn) {
+        loginBtn.style.display = 'none';
 
-    const status = document.createElement('span');
-    status.className = 'btn-text';
-    status.style.color = 'var(--color-gold)';
-    status.style.cursor = 'default';
-    status.textContent = 'Tryb Administratora';
-    loginBtn.parentNode.appendChild(status);
+        let status = loginBtn.parentNode.querySelector('.admin-status');
+        if (!status) {
+            status = document.createElement('span');
+            status.className = 'btn-text admin-status';
+            status.style.color = 'var(--color-gold)';
+            status.style.cursor = 'default';
+            status.textContent = 'Tryb Administratora';
+            loginBtn.parentNode.appendChild(status);
+        }
+    }
 
     // Make content editable
-    const editableSelectors = 'h1, h2, h3, h4, p, span:not(.btn span), li';
+    const editableSelectors = 'h1, h2, h3, h4, p, span:not(.btn span), li, .form-group label, .btn span';
     const elements = document.querySelectorAll(editableSelectors);
 
     elements.forEach(el => {
-        // Skip elements inside buttons or with specific classes
-        if (el.closest('button') || el.closest('.admin-add-btn')) return;
+        // Skip elements inside specific classes if needed, but we want labels/btn spans now
+        if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn')) return;
         el.setAttribute('contenteditable', 'true');
     });
 
+    // Add Delete Buttons
+    addDeleteButtons();
+
     // Add "Add Tile" buttons
     addTileButtons();
+}
+
+function addDeleteButtons() {
+    const cards = document.querySelectorAll('.mission-card, .action-card, .news-card, .feature-card, .form-group');
+    cards.forEach(card => {
+        if (card.querySelector('.admin-delete-btn')) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'admin-delete-btn';
+        btn.innerHTML = '&times;';
+        btn.title = 'Usuń element';
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (confirm('Czy na pewno chcesz usunąć ten element?')) {
+                card.remove();
+            }
+        });
+
+        // Ensure relative positioning for absolute button
+        const style = window.getComputedStyle(card);
+        if (style.position === 'static') {
+            card.style.position = 'relative';
+        }
+
+        card.appendChild(btn);
+    });
 }
 
 function addTileButtons() {
     const grids = [
         { selector: '.mission-grid', type: 'mission' },
         { selector: '.actions-grid', type: 'action' },
-        { selector: '.news-grid', type: 'news' },
+        { selector: '.news-grid', type: 'news', isNews: true },
         { selector: '.about-features', type: 'feature' }
     ];
 
@@ -395,28 +430,89 @@ function addTileButtons() {
             if (lastCard) {
                 const newCard = lastCard.cloneNode(true);
 
+                // Remove delete button from clone (will be re-added)
+                const delBtn = newCard.querySelector('.admin-delete-btn');
+                if (delBtn) delBtn.remove();
+
+                // Layout fix for News
+                if (gridInfo.isNews) {
+                    newCard.classList.remove('news-card-featured');
+                    newCard.classList.add('new-item');
+                    newCard.style.gridColumn = 'auto';
+                    newCard.style.gridRow = 'auto';
+                }
+
+                // Handle Numbering for Mission
+                if (gridInfo.type === 'mission') {
+                    const numberEl = newCard.querySelector('.mission-card-number');
+                    if (numberEl) {
+                        const count = grid.querySelectorAll('.mission-card').length + 1;
+                        numberEl.textContent = count < 10 ? '0' + count : count;
+                    }
+                }
+
+                // Handle Modals
+                const modalLink = newCard.querySelector('[data-modal]');
+                if (modalLink) {
+                    const oldModalId = modalLink.getAttribute('data-modal');
+                    const newModalId = 'modal-new-' + Date.now();
+                    modalLink.setAttribute('data-modal', newModalId);
+
+                    // Clone the actual modal
+                    const oldModal = document.getElementById(oldModalId);
+                    if (oldModal) {
+                        const newModal = oldModal.cloneNode(true);
+                        newModal.id = newModalId;
+                        document.body.appendChild(newModal);
+
+                        // Re-init modal events for the new modal
+                        newModal.querySelectorAll('.modal-close').forEach(b => {
+                            b.addEventListener('click', () => closeModal(newModal));
+                        });
+                        newModal.addEventListener('click', (e) => {
+                            if (e.target === newModal) closeModal(newModal);
+                        });
+
+                        // Make modal content editable
+                        newModal.querySelectorAll('h2, h3, p, li').forEach(el => el.setAttribute('contenteditable', 'true'));
+                    }
+                }
+
                 // Clear content
                 newCard.querySelectorAll('[contenteditable]').forEach(el => {
-                    if (el.tagName.toLowerCase() === 'h3') el.textContent = 'Nowy Tytuł';
-                    else if (el.tagName.toLowerCase() === 'p') el.textContent = 'Nowy opis...';
-                    else if (el.tagName.toLowerCase() === 'span') el.textContent = 'Nowa etykieta';
+                    const tag = el.tagName.toLowerCase();
+                    if (tag === 'h3') el.textContent = 'Nowy Tytuł';
+                    else if (tag === 'p') el.textContent = 'Nowy opis...';
+                    else if (tag === 'span' && !el.classList.contains('mission-card-number')) el.textContent = 'Etykieta';
+                    else if (tag === 'li') el.textContent = 'Nowy element listy';
                 });
 
-                // Insert before the button (which we will append to the end of the grid logic)
-                // Actually grid layout might need the button to be outside or special.
-                // For simplicity, we append to grid. styling might need adjustment if grid is strict.
-                // CSS Grid handles direct children. The button is currently last child.
-                // We want to insert before the button if it's already there? 
-                // Wait, my css says .admin-add-btn is a block. 
-                // To keep grid layout intact, maybe better to put the button AFTER the grid container in HTML?
-                // But the user asked to add tiles "in places where other ones are".
-                // Let's Insert Before the specific button.
-
-                // If the button is INSIDE the grid (which `appendChild` does), it becomes a grid item.
-                // We want it to be a grid item usually, or a full width one? 
-                // Let's just insert it before the button for now.
-
                 grid.insertBefore(newCard, btn);
+
+                // Re-apply admin features to new card
+                // Add delete button
+                const newDelBtn = document.createElement('button');
+                newDelBtn.className = 'admin-delete-btn';
+                newDelBtn.innerHTML = '&times;';
+                newDelBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (confirm('Usuń?')) newCard.remove();
+                });
+                newCard.style.position = 'relative';
+                newCard.appendChild(newDelBtn);
+
+                // Init triggers for new link
+                if (modalLink) {
+                    modalLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const mId = modalLink.getAttribute('data-modal');
+                        const m = document.getElementById(mId);
+                        if (m) {
+                            m.classList.add('active');
+                            document.body.classList.add('modal-open');
+                        }
+                    });
+                }
             }
         });
 
@@ -427,5 +523,173 @@ function addTileButtons() {
 // Add to init
 document.addEventListener('DOMContentLoaded', () => {
     // ... existing init calls ...
+    loadChanges(); // NEW: Load saved changes if any
     initLogin();
 });
+
+// ... (previous code) ...
+
+function enableAdminMode() {
+    document.body.classList.add('admin-mode');
+
+    // Hide login button and show status
+    const loginBtn = document.getElementById('adminLoginBtn');
+    if (loginBtn) {
+        loginBtn.style.display = 'none';
+
+        let status = loginBtn.parentNode.querySelector('.admin-status');
+        if (!status) {
+            // Create Toolbar Container
+            const toolbar = document.createElement('div');
+            toolbar.className = 'admin-toolbar';
+
+            // Status Text
+            status = document.createElement('span');
+            status.className = 'btn-text admin-status';
+            status.style.color = 'var(--color-gold)';
+            status.style.cursor = 'default';
+            status.textContent = 'Tryb Administratora';
+
+            // Save Button
+            const saveBtn = document.createElement('button');
+            saveBtn.className = 'btn-save';
+            saveBtn.textContent = 'Zapisz';
+            saveBtn.title = 'Zapisz zmiany w przeglądarce';
+            saveBtn.onclick = saveChanges;
+
+            // Download Button
+            const dlBtn = document.createElement('button');
+            dlBtn.className = 'btn-download';
+            dlBtn.textContent = 'Pobierz plik';
+            dlBtn.title = 'Pobierz zaktualizowany plik index.html';
+            dlBtn.onclick = downloadFile;
+
+            toolbar.appendChild(status);
+            toolbar.appendChild(saveBtn);
+            toolbar.appendChild(dlBtn);
+
+            loginBtn.parentNode.appendChild(toolbar);
+        }
+    }
+
+    // Make content editable
+    const editableSelectors = 'h1, h2, h3, h4, p, span:not(.btn span), li, .form-group label, .btn span';
+
+    // Helper to apply editable to new/existing elements
+    const makeEditable = () => {
+        document.querySelectorAll(editableSelectors).forEach(el => {
+            if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn') || el.closest('.admin-toolbar')) return;
+            el.setAttribute('contenteditable', 'true');
+        });
+    };
+    makeEditable();
+
+    // Add Delete Buttons
+    addDeleteButtons();
+
+    // Add "Add Tile" buttons
+    addTileButtons();
+}
+
+/* ─── Persistence Logic ─── */
+
+function saveChanges() {
+    const data = {
+        mission: document.querySelector('.mission-grid').innerHTML,
+        actions: document.querySelector('.actions-grid').innerHTML,
+        news: document.querySelector('.news-grid').innerHTML,
+        features: document.querySelector('.about-features').innerHTML,
+        modals: []
+    };
+
+    // Save only dynamically added modals
+    document.querySelectorAll('body > [id^="modal-new-"]').forEach(modal => {
+        data.modals.push(modal.outerHTML);
+    });
+
+    localStorage.setItem('adminContent', JSON.stringify(data));
+    showToast('Zmiany zapisane pomyślnie!');
+}
+
+function loadChanges() {
+    const saved = localStorage.getItem('adminContent');
+    if (!saved) return;
+
+    try {
+        const data = JSON.parse(saved);
+
+        if (data.mission) document.querySelector('.mission-grid').innerHTML = data.mission;
+        if (data.actions) document.querySelector('.actions-grid').innerHTML = data.actions;
+        if (data.news) document.querySelector('.news-grid').innerHTML = data.news;
+        if (data.features) document.querySelector('.about-features').innerHTML = data.features;
+
+        // Restore modals
+        if (data.modals && Array.isArray(data.modals)) {
+            data.modals.forEach(html => {
+                // Check if already exists to avoid duplicates on re-run
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const id = temp.firstChild.id;
+                if (!document.getElementById(id)) {
+                    document.body.appendChild(temp.firstChild);
+                }
+            });
+        }
+
+        // Re-attach event listeners for modals (old and new)
+        // We need to re-run initModals partially or manual attach
+        // Simplest is to just re-run initModals to catch all triggers
+        initModals();
+
+    } catch (e) {
+        console.error('Error loading saved content:', e);
+    }
+}
+
+function downloadFile() {
+    // Clone document
+    const clone = document.documentElement.cloneNode(true);
+
+    // Clean up Admin UI from clone
+    clone.classList.remove('admin-mode');
+
+    // Remove toolbar
+    const toolbar = clone.querySelector('.admin-toolbar');
+    if (toolbar) toolbar.remove();
+
+    // Show login button again
+    const loginBtn = clone.querySelector('#adminLoginBtn');
+    if (loginBtn) loginBtn.style.display = '';
+
+    // Remove Add/Delete buttons
+    clone.querySelectorAll('.admin-add-btn, .admin-delete-btn').forEach(el => el.remove());
+
+    // Remove contenteditable attributes
+    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+
+    // Create Blob
+    const htmlContent = clone.outerHTML;
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'index.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function showToast(msg) {
+    let toast = document.querySelector('.admin-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'admin-toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
