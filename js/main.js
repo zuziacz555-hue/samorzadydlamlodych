@@ -467,6 +467,14 @@ function enableAdminMode(hasToken) {
     };
     makeEditable();
 
+    // Add listeners for stats editing
+    document.querySelectorAll('.stat-number').forEach(el => {
+        el.addEventListener('input', () => {
+            const val = parseInt(el.textContent.replace(/\D/g, '')) || 0;
+            el.setAttribute('data-target', val);
+        });
+    });
+
     // Add Delete Buttons
     addDeleteButtons();
 
@@ -648,98 +656,15 @@ function addTileButtons() {
     });
 }
 
-// Add to init
-// Add to init
-document.addEventListener('DOMContentLoaded', () => {
-    // ... existing init calls ...
-    loadChanges(); // NEW: Load saved changes if any
-    initLogin();
-});
-
-// ... (previous code) ...
-
-function enableAdminMode(hasToken) {
-    document.body.classList.add('admin-mode');
-
-    // Hide login button and show status
-    const loginBtn = document.getElementById('adminLoginBtn');
-    if (loginBtn) {
-        loginBtn.style.display = 'none';
-
-        let status = loginBtn.parentNode.querySelector('.admin-status');
-        if (!status) {
-            // Create Toolbar Container
-            const toolbar = document.createElement('div');
-            toolbar.className = 'admin-toolbar';
-
-            // Status Text
-            status = document.createElement('span');
-            status.className = 'btn-text admin-status';
-            status.style.color = 'var(--color-gold)';
-            status.style.cursor = 'default';
-            status.textContent = hasToken ? 'Admin (Online)' : 'Admin (Lokalnie)';
-
-            // SINGLE Save Button
-            const saveBtn = document.createElement('button');
-            saveBtn.className = 'btn-save';
-            saveBtn.textContent = 'ZAPISZ ZMIANY';
-            saveBtn.title = hasToken ? 'Zapisz lokalnie i opublikuj na GitHub' : 'Zapisz tylko lokalnie (brak tokenu)';
-
-            saveBtn.onclick = async () => {
-                // 1. Save Local
-                saveChanges();
-
-                // 2. Publish if token exists
-                if (hasToken) {
-                    const token = localStorage.getItem('githubToken');
-                    if (token) {
-                        try {
-                            await publishToGitHub(token);
-                        } catch (e) {
-                            showToast('Błąd publikacji: ' + e.message, 'error');
-                        }
-                    } else {
-                        showToast('Błąd: Brak tokenu w pamięci!', 'error');
-                    }
-                } else {
-                    showToast('Zapisano tylko lokalnie (brak tokenu)', 'info');
-                }
-            };
-
-            toolbar.appendChild(status);
-            toolbar.appendChild(saveBtn);
-
-            loginBtn.parentNode.appendChild(toolbar);
-        }
-    }
-
-    // Make content editable
-    const editableSelectors = 'h1, h2, h3, h4, p, span:not(.btn span), li, .form-group label, .btn span';
-
-    // Helper to apply editable to new/existing elements
-    const makeEditable = () => {
-        document.querySelectorAll(editableSelectors).forEach(el => {
-            if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn') || el.closest('.admin-toolbar')) return;
-            el.setAttribute('contenteditable', 'true');
-        });
-    };
-    makeEditable();
-
-    // Add Delete Buttons
-    addDeleteButtons();
-
-    // Add "Add Tile" buttons
-    addTileButtons();
-}
-
 /* ─── Persistence Logic ─── */
 
 function saveChanges() {
     const data = {
-        mission: document.querySelector('.mission-grid').innerHTML,
-        actions: document.querySelector('.actions-grid').innerHTML,
-        news: document.querySelector('.news-grid').innerHTML,
-        features: document.querySelector('.about-features').innerHTML,
+        mission: document.querySelector('.mission-grid')?.innerHTML,
+        actions: document.querySelector('.actions-grid')?.innerHTML,
+        news: document.querySelector('.news-grid')?.innerHTML,
+        features: document.querySelector('.about-features')?.innerHTML,
+        stats: document.querySelector('.stats-grid')?.innerHTML,
         modals: []
     };
 
@@ -763,6 +688,9 @@ function loadChanges() {
         if (data.actions) document.querySelector('.actions-grid').innerHTML = data.actions;
         if (data.news) document.querySelector('.news-grid').innerHTML = data.news;
         if (data.features) document.querySelector('.about-features').innerHTML = data.features;
+        if (data.stats && document.querySelector('.stats-grid')) {
+            document.querySelector('.stats-grid').innerHTML = data.stats;
+        }
 
         // Restore modals
         if (data.modals && Array.isArray(data.modals)) {
