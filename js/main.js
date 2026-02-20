@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initModals();
     loadChanges();
     initLogin();
+
+    // Auto-login check
+    const savedToken = localStorage.getItem('githubToken');
+    if (savedToken) {
+        enableAdminMode(true);
+    }
 });
 
 /* ─── Hero Particles ─── */
@@ -622,21 +628,35 @@ function addTileButtons() {
 
 function saveChanges() {
     const data = {
-        mission: document.querySelector('.mission-grid')?.innerHTML,
-        actions: document.querySelector('.actions-grid')?.innerHTML,
-        news: document.querySelector('.news-grid')?.innerHTML,
-        features: document.querySelector('.about-features')?.innerHTML,
-        stats: document.querySelector('.stats-grid')?.innerHTML,
+        mission: cleanHtml('.mission-grid'),
+        actions: cleanHtml('.actions-grid'),
+        news: cleanHtml('.news-grid'),
+        features: cleanHtml('.about-features'),
+        stats: cleanHtml('.stats-grid'),
         modals: []
     };
 
     // Save only dynamically added modals
     document.querySelectorAll('body > [id^="modal-new-"]').forEach(modal => {
-        data.modals.push(modal.outerHTML);
+        const clone = modal.cloneNode(true);
+        clone.querySelectorAll('.admin-delete-btn, .admin-add-btn').forEach(el => el.remove());
+        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+        data.modals.push(clone.outerHTML);
     });
 
     localStorage.setItem('adminContent', JSON.stringify(data));
     showToast('Zmiany zapisane lokalnie!');
+}
+
+function cleanHtml(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return null;
+    const clone = el.cloneNode(true);
+    // Remove admin buttons
+    clone.querySelectorAll('.admin-add-btn, .admin-delete-btn').forEach(btn => btn.remove());
+    // Remove contenteditable
+    clone.querySelectorAll('[contenteditable]').forEach(editable => editable.removeAttribute('contenteditable'));
+    return clone.innerHTML;
 }
 
 function loadChanges() {
