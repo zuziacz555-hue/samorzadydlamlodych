@@ -301,9 +301,11 @@ function initLogin() {
     const modalHtml = `
         <div class="login-modal" id="loginModal">
             <div class="login-box">
-                <h3>Logowanie Administratora</h3>
-                <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">Aby edytować i publikować, podaj Token GitHub. Aby testować lokalnie, wpisz "admin".</p>
-                <input type="password" id="adminPassword" class="login-input" placeholder="Wklej Token GitHub...">
+                <h3>Logowanie Administratora (v4)</h3>
+                <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
+                    Wpisz hasło "admin" lub swój Token GitHub.
+                </p>
+                <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
                 <div class="login-actions">
                     <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
                     <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
@@ -336,22 +338,24 @@ function initLogin() {
                 const decryptedToken = await window.AuthVault.decrypt(window.SITE_CONFIG.auth, val);
 
                 // Success!
-                sessionStorage.setItem('githubToken', decryptedToken); // Session only
+                // FIX: Use localStorage for reliability
+                localStorage.setItem('githubToken', decryptedToken);
                 enableAdminMode(true);
                 modal.classList.remove('active');
-                showToast('Zalogowano Globalnie!', 'success');
+                showToast('Zalogowano Globalnie (v4)!', 'success');
                 return;
             } catch (e) {
+                // Wrong password or decrypt fail
                 console.log('Decryption failed, checking other methods...');
             }
         }
 
         // 2. Check if it's a raw GitHub Token
         if (val.startsWith('ghp_') || val.startsWith('github_pat_')) {
-            sessionStorage.setItem('githubToken', val);
+            localStorage.setItem('githubToken', val);
             enableAdminMode(true);
             modal.classList.remove('active');
-            showToast('Zalogowano Tokenem (Sesja)', 'info');
+            showToast('Zalogowano Tokenem', 'info');
         }
         // 3. Fallback: Local Admin
         else if (val === ADMIN_HASH) {
@@ -360,7 +364,7 @@ function initLogin() {
             } else {
                 enableAdminMode(false);
                 modal.classList.remove('active');
-                showToast('Tryb Lokalny (brak publikacji)', 'info');
+                showToast('Tryb Lokalny', 'info');
             }
         } else {
             alert('Nieprawidłowe hasło lub token!');
@@ -415,7 +419,8 @@ function enableAdminMode(hasToken) {
 
                 // 2. Publish if token exists
                 if (hasToken) {
-                    const token = sessionStorage.getItem('githubToken') || localStorage.getItem('githubToken');
+                    // FIX: Check localStorage
+                    const token = localStorage.getItem('githubToken');
                     if (token) {
                         try {
                             await publishToGitHub(token);
@@ -423,7 +428,8 @@ function enableAdminMode(hasToken) {
                             showToast('Błąd publikacji: ' + e.message, 'error');
                         }
                     } else {
-                        showToast('Błąd: Nie znaleziono tokenu. Zaloguj się ponownie.', 'error');
+                        // Diagnostic message
+                        showToast('BŁĄD v4: Brak tokenu w localStorage. Zaloguj się ponownie.', 'error');
                     }
                 } else {
                     showToast('Zapisano tylko lokalnie (brak tokenu)', 'info');
