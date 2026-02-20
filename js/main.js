@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandling();
     initHeroAnimation();
     initModals();
+    loadChanges();
+    initLogin();
 });
 
 /* ─── Hero Particles ─── */
@@ -483,7 +485,7 @@ function enableAdminMode(hasToken) {
 }
 
 function setupGlobalAccess() {
-    const token = sessionStorage.getItem('githubToken');
+    const token = localStorage.getItem('githubToken');
     if (!token) return alert('Brak tokenu sesji!');
 
     const password = prompt('Podaj hasło, którego chcesz używać na wszystkich urządzeniach (np. "admin"):', 'admin');
@@ -822,8 +824,7 @@ async function publishToGitHub(token) {
     } catch (err) {
         showToast('Błąd: ' + err.message, 'error');
         if (err.message.includes('Bad credentials') || err.message.includes('401')) {
-            sessionStorage.removeItem('githubToken'); // Use sessionStorage now? or stay local?
-            // Let's stick to what we decided in initLogin
+            localStorage.removeItem('githubToken');
         }
     }
 }
