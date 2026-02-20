@@ -415,7 +415,7 @@ function enableAdminMode(hasToken) {
 
                 // 2. Publish if token exists
                 if (hasToken) {
-                    const token = sessionStorage.getItem('githubToken');
+                    const token = sessionStorage.getItem('githubToken') || localStorage.getItem('githubToken');
                     if (token) {
                         try {
                             await publishToGitHub(token);
@@ -423,7 +423,7 @@ function enableAdminMode(hasToken) {
                             showToast('Błąd publikacji: ' + e.message, 'error');
                         }
                     } else {
-                        showToast('Sesja wygasła. Zaloguj się ponownie.', 'error');
+                        showToast('Błąd: Nie znaleziono tokenu. Zaloguj się ponownie.', 'error');
                     }
                 } else {
                     showToast('Zapisano tylko lokalnie (brak tokenu)', 'info');
