@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="pl"><head>
+<html lang="pl">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samorząd dla Młodych — stowarzyszenie zrzeszające młodych samorządowców z całej Polski, działające ponad podziałami partyjnymi.">
+    <meta name="description"
+        content="Samorząd dla Młodych — stowarzyszenie zrzeszające młodych samorządowców z całej Polski, działające ponad podziałami partyjnymi.">
     <meta name="keywords" content="samorząd, młodzi samorządowcy, Polska, stowarzyszenie, polityka lokalna">
     <title>Samorząd dla Młodych — Razem dla lokalnej Polski</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<style type="text/css" id="operaUserStyle">
-  video {
-    filter: -opera-shader(url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQ0IGlWaXNpYmxlUmVjdDsKdW5pZm9ybSBmbG9hdCBpQXJnc1sxXTsKCmNvbnN0IGZsb2F0IEVQU0lPTiA9IDAuMTsKY29uc3QgZmxvYXQgVl9NSU4gPSAwOwpjb25zdCBmbG9hdCBWX0xPVyA9IDAuMjU7CmNvbnN0IGZsb2F0IFZfTUVEID0gMC41Owpjb25zdCBmbG9hdCBWX0hJR0ggPSAwLjc1Owpjb25zdCBmbG9hdCBWX01BWCA9IDE7Cgpjb25zdCBmbG9hdCBUSFJFU0hPTERfQVJFQSA9IDgwMCAqIDYwMDsKY29uc3QgZmxvYXQgTUlOX0FSRUEgPSA0MDAgKiAxMDA7CmNvbnN0IGZsb2F0IE1JTl9TVFJJUCA9IDIwOwpjb25zdCBmbG9hdCBNQVJHSU4gPSAxOwoKaW5saW5lIGZsb2F0MyBwaXhlbChmbG9hdDIgeHksIGZsb2F0MiBvZmZzZXQpIHsKICAgIHJldHVybiBpQ2h1bmsuZXZhbCh4eSArIG9mZnNldCkucmdiOwp9CgppbmxpbmUgZmxvYXQzIHNoYXJwZW4oZmxvYXQyIHh5KSB7CiAgICBmbG9hdDMgZiA9CiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKSAqICAxICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAwLCAtMSkpICogLTEgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDEsIC0xKSkgKiAgMSArCgogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpICogLTEgICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSkgKiAtMSAgKwoKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSkgKiAxICAgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpICogMTsKICAgIHJldHVybiBmIC8gLTE7Cn0KCmZsb2F0NCBSR1gyKGZsb2F0MiB4eSkgewogICAgZmxvYXQyIGNodW5rX3NpemUgPSBpVmlzaWJsZVJlY3Quenc7CiAgICBmbG9hdDQgY29sb3IgPSBpQ2h1bmsuZXZhbCh4eSk7CgogICAgaWYgKGNodW5rX3NpemUueCAqIGNodW5rX3NpemUueSA8IE1JTl9BUkVBKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmIChjaHVua19zaXplLnkgPCBNSU5fU1RSSVAgfHwgY2h1bmtfc2l6ZS54IDwgTUlOX1NUUklQKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmICh4eS54IDwgTUFSR0lOIHx8IHh5LnggPiAoY2h1bmtfc2l6ZS54IC0gTUFSR0lOKSB8fAogICAgICAgIHh5LnkgPCBNQVJHSU4gfHwgeHkueSA+IChjaHVua19zaXplLnkgLSBNQVJHSU4pKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIHJldHVybiBmbG9hdDQoc2hhcnBlbih4eSksIDEpOwp9CgppbmxpbmUgZmxvYXQzIG1pbjN2KGZsb2F0MyB4LCBmbG9hdDMgeSwgZmxvYXQzIHopIHsKCXJldHVybiBtaW4oeCwgbWluKHksIHopKTsKfQoKaW5saW5lIGZsb2F0MyBtYXgzdihmbG9hdDMgeCwgZmxvYXQzIHksIGZsb2F0MyB6KSB7CglyZXR1cm4gbWF4KHgsIG1heCh5LCB6KSk7Cn0KCmZsb2F0MyBSR1gzKGZsb2F0MiB4eSwgZmxvYXQgc3RyZW5ndGgpIHsKICAgIGZsb2F0MyBhID0gcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgLTEpKTsKICAgIGZsb2F0MyBjID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgLTEpKTsKCiAgICBmbG9hdDMgZCA9IHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpOwogICAgZmxvYXQzIGYgPSBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSk7CgogICAgZmxvYXQzIGcgPSBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKTsKICAgIGZsb2F0MyBpID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpOwoKICAgIGZsb2F0MyBtaW5fZGVmID0gbWluM3YoZCwgZSwgZik7CiAgICBmbG9hdDMgbWluX2JkZWZoID0gbWluM3YoYiwgbWluX2RlZiwgaCk7CiAgICBmbG9hdDMgbWluX2FiY2RmZ2hpID0gbWluM3YobWluM3YoYSwgbWluX2JkZWZoLCBjKSwgZywgaSk7CiAgICBmbG9hdDMgbWluM19mYWN0b3IgPSBtaW5fYmRlZmggKyBtaW5fYWJjZGZnaGk7CgogICAgZmxvYXQzIG1heF9kZWYgPSBtYXgzdihkLCBlLCBmKTsKICAgIGZsb2F0MyBtYXhfYmRlZmggPSBtYXgzdihiLCBtYXhfZGVmLCBoKTsKICAgIGZsb2F0MyBtYXhfYWJjZGZnaGkgPSBtYXgzdihtYXgzdihhLCBtaW5fYmRlZmgsIGMpLCBnLCBpKTsKICAgIGZsb2F0MyBtYXgzX2ZhY3RvciA9IG1heF9iZGVmaCArIG1heF9hYmNkZmdoaTsKCiAgICBmbG9hdDMgZmFjdG9yID0gMS4wIC8gbWF4M19mYWN0b3I7CgogICAgZmxvYXQzIGFtcCA9IHNhdHVyYXRlKG1pbihtaW4zX2ZhY3RvciwgMiAtIG1heDNfZmFjdG9yKSAqIGZhY3Rvcik7CiAgICBmbG9hdDMgYW1wX3NxcnQgPSBzcXJ0KGFtcCk7CgogICAgZmxvYXQgcGVhayA9IC0xLjAgLyAobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQzIGNyb3NzX3dlaWdodHMgPSBhbXBfc3FydCAqIHBlYWs7CiAgICBmbG9hdDMgd2VpZ2h0cyA9IDEgLyAoMSArIDQgKiBjcm9zc193ZWlnaHRzKTsKCiAgICBmbG9hdDMgcmVzdWx0ID0gKChiICsgZCArIGYgKyBoKSAqIGNyb3NzX3dlaWdodHMgKyBlKSAqIHdlaWdodHM7CgogICAgcmV0dXJuIHNhdHVyYXRlKHJlc3VsdCk7Cn0KCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(0.50 calc(env(-opera-accent-color-r, 255)/255) calc(env(-opera-accent-color-g, 255)/255) calc(env(-opera-accent-color-b, 255)/255)));
-  }
+    <style type="text/css" id="operaUserStyle">
+        video {
+            filter: -opera-shader(url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQ0IGlWaXNpYmxlUmVjdDsKdW5pZm9ybSBmbG9hdCBpQXJnc1sxXTsKCmNvbnN0IGZsb2F0IEVQU0lPTiA9IDAuMTsKY29uc3QgZmxvYXQgVl9NSU4gPSAwOwpjb25zdCBmbG9hdCBWX0xPVyA9IDAuMjU7CmNvbnN0IGZsb2F0IFZfTUVEID0gMC41Owpjb25zdCBmbG9hdCBWX0hJR0ggPSAwLjc1Owpjb25zdCBmbG9hdCBWX01BWCA9IDE7Cgpjb25zdCBmbG9hdCBUSFJFU0hPTERfQVJFQSA9IDgwMCAqIDYwMDsKY29uc3QgZmxvYXQgTUlOX0FSRUEgPSA0MDAgKiAxMDA7CmNvbnN0IGZsb2F0IE1JTl9TVFJJUCA9IDIwOwpjb25zdCBmbG9hdCBNQVJHSU4gPSAxOwoKaW5saW5lIGZsb2F0MyBwaXhlbChmbG9hdDIgeHksIGZsb2F0MiBvZmZzZXQpIHsKICAgIHJldHVybiBpQ2h1bmsuZXZhbCh4eSArIG9mZnNldCkucmdiOwp9CgppbmxpbmUgZmxvYXQzIHNoYXJwZW4oZmxvYXQyIHh5KSB7CiAgICBmbG9hdDMgZiA9CiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKSAqICAxICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAwLCAtMSkpICogLTEgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDEsIC0xKSkgKiAgMSArCgogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpICogLTEgICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSkgKiAtMSAgKwoKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSkgKiAxICAgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpICogMTsKICAgIHJldHVybiBmIC8gLTE7Cn0KCmZsb2F0NCBSR1gyKGZsb2F0MiB4eSkgewogICAgZmxvYXQyIGNodW5rX3NpemUgPSBpVmlzaWJsZVJlY3Quenc7CiAgICBmbG9hdDQgY29sb3IgPSBpQ2h1bmsuZXZhbCh4eSk7CgogICAgaWYgKGNodW5rX3NpemUueCAqIGNodW5rX3NpemUueSA8IE1JTl9BUkVBKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmIChjaHVua19zaXplLnkgPCBNSU5fU1RSSVAgfHwgY2h1bmtfc2l6ZS54IDwgTUlOX1NUUklQKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmICh4eS54IDwgTUFSR0lOIHx8IHh5LnggPiAoY2h1bmtfc2l6ZS54IC0gTUFSR0lOKSB8fAogICAgICAgIHh5LnkgPCBNQVJHSU4gfHwgeHkueSA+IChjaHVua19zaXplLnkgLSBNQVJHSU4pKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIHJldHVybiBmbG9hdDQoc2hhcnBlbih4eSksIDEpOwp9CgppbmxpbmUgZmxvYXQzIG1pbjN2KGZsb2F0MyB4LCBmbG9hdDMgeSwgZmxvYXQzIHopIHsKCXJldHVybiBtaW4oeCwgbWluKHksIHopKTsKfQoKaW5saW5lIGZsb2F0MyBtYXgzdihmbG9hdDMgeCwgZmxvYXQzIHksIGZsb2F0MyB6KSB7CglyZXR1cm4gbWF4KHgsIG1heCh5LCB6KSk7Cn0KCmZsb2F0MyBSR1gzKGZsb2F0MiB4eSwgZmxvYXQgc3RyZW5ndGgpIHsKICAgIGZsb2F0MyBhID0gcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgLTEpKTsKICAgIGZsb2F0MyBjID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgLTEpKTsKCiAgICBmbG9hdDMgZCA9IHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpOwogICAgZmxvYXQzIGYgPSBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSk7CgogICAgZmxvYXQzIGcgPSBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKTsKICAgIGZsb2F0MyBpID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpOwoKICAgIGZsb2F0MyBtaW5fZGVmID0gbWluM3YoZCwgZSwgZik7CiAgICBmbG9hdDMgbWluX2JkZWZoID0gbWluM3YoYiwgbWluX2RlZiwgaCk7CiAgICBmbG9hdDMgbWluX2FiY2RmZ2hpID0gbWluM3YobWluM3YoYSwgbWluX2JkZWZoLCBjKSwgZywgaSk7CiAgICBmbG9hdDMgbWluM19mYWN0b3IgPSBtaW5fYmRlZmggKyBtaW5fYWJjZGZnaGk7CgogICAgZmxvYXQzIG1heF9kZWYgPSBtYXgzdihkLCBlLCBmKTsKICAgIGZsb2F0MyBtYXhfYmRlZmggPSBtYXgzdihiLCBtYXhfZGVmLCBoKTsKICAgIGZsb2F0MyBtYXhfYWJjZGZnaGkgPSBtYXgzdihtYXgzdihhLCBtaW5fYmRlZmgsIGMpLCBnLCBpKTsKICAgIGZsb2F0MyBtYXgzX2ZhY3RvciA9IG1heF9iZGVmaCArIG1heF9hYmNkZmdoaTsKCiAgICBmbG9hdDMgZmFjdG9yID0gMS4wIC8gbWF4M19mYWN0b3I7CgogICAgZmxvYXQzIGFtcCA9IHNhdHVyYXRlKG1pbihtaW4zX2ZhY3RvciwgMiAtIG1heDNfZmFjdG9yKSAqIGZhY3Rvcik7CiAgICBmbG9hdDMgYW1wX3NxcnQgPSBzcXJ0KGFtcCk7CgogICAgZmxvYXQgcGVhayA9IC0xLjAgLyAobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQzIGNyb3NzX3dlaWdodHMgPSBhbXBfc3FydCAqIHBlYWs7CiAgICBmbG9hdDMgd2VpZ2h0cyA9IDEgLyAoMSArIDQgKiBjcm9zc193ZWlnaHRzKTsKCiAgICBmbG9hdDMgcmVzdWx0ID0gKChiICsgZCArIGYgKyBoKSAqIGNyb3NzX3dlaWdodHMgKyBlKSAqIHdlaWdodHM7CgogICAgcmV0dXJuIHNhdHVyYXRlKHJlc3VsdCk7Cn0KCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(0.50 calc(env(-opera-accent-color-r, 255)/255) calc(env(-opera-accent-color-g, 255)/255) calc(env(-opera-accent-color-b, 255)/255)));
+        }
 
 
-  img {
-    filter: -opera-shader(url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQ0IGlWaXNpYmxlUmVjdDsKdW5pZm9ybSBmbG9hdCBpQXJnc1sxXTsKCmNvbnN0IGZsb2F0IEVQU0lPTiA9IDAuMTsKY29uc3QgZmxvYXQgVl9NSU4gPSAwOwpjb25zdCBmbG9hdCBWX0xPVyA9IDAuMjU7CmNvbnN0IGZsb2F0IFZfTUVEID0gMC41Owpjb25zdCBmbG9hdCBWX0hJR0ggPSAwLjc1Owpjb25zdCBmbG9hdCBWX01BWCA9IDE7Cgpjb25zdCBmbG9hdCBUSFJFU0hPTERfQVJFQSA9IDgwMCAqIDYwMDsKY29uc3QgZmxvYXQgTUlOX0FSRUEgPSA0MDAgKiAxMDA7CmNvbnN0IGZsb2F0IE1JTl9TVFJJUCA9IDIwOwpjb25zdCBmbG9hdCBNQVJHSU4gPSAxOwoKaW5saW5lIGZsb2F0MyBwaXhlbChmbG9hdDIgeHksIGZsb2F0MiBvZmZzZXQpIHsKICAgIHJldHVybiBpQ2h1bmsuZXZhbCh4eSArIG9mZnNldCkucmdiOwp9CgppbmxpbmUgZmxvYXQzIHNoYXJwZW4oZmxvYXQyIHh5KSB7CiAgICBmbG9hdDMgZiA9CiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKSAqICAxICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAwLCAtMSkpICogLTEgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDEsIC0xKSkgKiAgMSArCgogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpICogLTEgICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSkgKiAtMSAgKwoKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSkgKiAxICAgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpICogMTsKICAgIHJldHVybiBmIC8gLTE7Cn0KCmZsb2F0NCBSR1gyKGZsb2F0MiB4eSkgewogICAgZmxvYXQyIGNodW5rX3NpemUgPSBpVmlzaWJsZVJlY3Quenc7CiAgICBmbG9hdDQgY29sb3IgPSBpQ2h1bmsuZXZhbCh4eSk7CgogICAgaWYgKGNodW5rX3NpemUueCAqIGNodW5rX3NpemUueSA8IE1JTl9BUkVBKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmIChjaHVua19zaXplLnkgPCBNSU5fU1RSSVAgfHwgY2h1bmtfc2l6ZS54IDwgTUlOX1NUUklQKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmICh4eS54IDwgTUFSR0lOIHx8IHh5LnggPiAoY2h1bmtfc2l6ZS54IC0gTUFSR0lOKSB8fAogICAgICAgIHh5LnkgPCBNQVJHSU4gfHwgeHkueSA+IChjaHVua19zaXplLnkgLSBNQVJHSU4pKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIHJldHVybiBmbG9hdDQoc2hhcnBlbih4eSksIDEpOwp9CgppbmxpbmUgZmxvYXQzIG1pbjN2KGZsb2F0MyB4LCBmbG9hdDMgeSwgZmxvYXQzIHopIHsKCXJldHVybiBtaW4oeCwgbWluKHksIHopKTsKfQoKaW5saW5lIGZsb2F0MyBtYXgzdihmbG9hdDMgeCwgZmxvYXQzIHksIGZsb2F0MyB6KSB7CglyZXR1cm4gbWF4KHgsIG1heCh5LCB6KSk7Cn0KCmZsb2F0MyBSR1gzKGZsb2F0MiB4eSwgZmxvYXQgc3RyZW5ndGgpIHsKICAgIGZsb2F0MyBhID0gcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgLTEpKTsKICAgIGZsb2F0MyBjID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgLTEpKTsKCiAgICBmbG9hdDMgZCA9IHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpOwogICAgZmxvYXQzIGYgPSBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSk7CgogICAgZmxvYXQzIGcgPSBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKTsKICAgIGZsb2F0MyBpID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpOwoKICAgIGZsb2F0MyBtaW5fZGVmID0gbWluM3YoZCwgZSwgZik7CiAgICBmbG9hdDMgbWluX2JkZWZoID0gbWluM3YoYiwgbWluX2RlZiwgaCk7CiAgICBmbG9hdDMgbWluX2FiY2RmZ2hpID0gbWluM3YobWluM3YoYSwgbWluX2JkZWZoLCBjKSwgZywgaSk7CiAgICBmbG9hdDMgbWluM19mYWN0b3IgPSBtaW5fYmRlZmggKyBtaW5fYWJjZGZnaGk7CgogICAgZmxvYXQzIG1heF9kZWYgPSBtYXgzdihkLCBlLCBmKTsKICAgIGZsb2F0MyBtYXhfYmRlZmggPSBtYXgzdihiLCBtYXhfZGVmLCBoKTsKICAgIGZsb2F0MyBtYXhfYWJjZGZnaGkgPSBtYXgzdihtYXgzdihhLCBtaW5fYmRlZmgsIGMpLCBnLCBpKTsKICAgIGZsb2F0MyBtYXgzX2ZhY3RvciA9IG1heF9iZGVmaCArIG1heF9hYmNkZmdoaTsKCiAgICBmbG9hdDMgZmFjdG9yID0gMS4wIC8gbWF4M19mYWN0b3I7CgogICAgZmxvYXQzIGFtcCA9IHNhdHVyYXRlKG1pbihtaW4zX2ZhY3RvciwgMiAtIG1heDNfZmFjdG9yKSAqIGZhY3Rvcik7CiAgICBmbG9hdDMgYW1wX3NxcnQgPSBzcXJ0KGFtcCk7CgogICAgZmxvYXQgcGVhayA9IC0xLjAgLyAobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQzIGNyb3NzX3dlaWdodHMgPSBhbXBfc3FydCAqIHBlYWs7CiAgICBmbG9hdDMgd2VpZ2h0cyA9IDEgLyAoMSArIDQgKiBjcm9zc193ZWlnaHRzKTsKCiAgICBmbG9hdDMgcmVzdWx0ID0gKChiICsgZCArIGYgKyBoKSAqIGNyb3NzX3dlaWdodHMgKyBlKSAqIHdlaWdodHM7CgogICAgcmV0dXJuIHNhdHVyYXRlKHJlc3VsdCk7Cn0KCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(0.50 calc(env(-opera-accent-color-r, 255)/255) calc(env(-opera-accent-color-g, 255)/255) calc(env(-opera-accent-color-b, 255)/255)));
-  }
-</style><style type="text/css"></style><style>[_nghost-ng-c2697620354]{font-family:Open Sans,sans-serif;color:#121212}</style></head>
+        img {
+            filter: -opera-shader(url(data:text/plain;base64,Ly8gaHR0cHM6Ly9naXRodWIuY29tL0dQVU9wZW4tRWZmZWN0cy9GaWRlbGl0eUZYLUNBUwovLyB2MwoKdW5pZm9ybSBzaGFkZXIgaUNodW5rOwp1bmlmb3JtIGZsb2F0MiBpTW91c2U7CnVuaWZvcm0gZmxvYXQ0IGlWaXNpYmxlUmVjdDsKdW5pZm9ybSBmbG9hdCBpQXJnc1sxXTsKCmNvbnN0IGZsb2F0IEVQU0lPTiA9IDAuMTsKY29uc3QgZmxvYXQgVl9NSU4gPSAwOwpjb25zdCBmbG9hdCBWX0xPVyA9IDAuMjU7CmNvbnN0IGZsb2F0IFZfTUVEID0gMC41Owpjb25zdCBmbG9hdCBWX0hJR0ggPSAwLjc1Owpjb25zdCBmbG9hdCBWX01BWCA9IDE7Cgpjb25zdCBmbG9hdCBUSFJFU0hPTERfQVJFQSA9IDgwMCAqIDYwMDsKY29uc3QgZmxvYXQgTUlOX0FSRUEgPSA0MDAgKiAxMDA7CmNvbnN0IGZsb2F0IE1JTl9TVFJJUCA9IDIwOwpjb25zdCBmbG9hdCBNQVJHSU4gPSAxOwoKaW5saW5lIGZsb2F0MyBwaXhlbChmbG9hdDIgeHksIGZsb2F0MiBvZmZzZXQpIHsKICAgIHJldHVybiBpQ2h1bmsuZXZhbCh4eSArIG9mZnNldCkucmdiOwp9CgppbmxpbmUgZmxvYXQzIHNoYXJwZW4oZmxvYXQyIHh5KSB7CiAgICBmbG9hdDMgZiA9CiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKSAqICAxICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAwLCAtMSkpICogLTEgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDEsIC0xKSkgKiAgMSArCgogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpICogLTEgICsKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSkgKiAtMSAgKwoKICAgICAgICBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSkgKiAxICAgKwogICAgICAgIHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKSAqIC0xICArCiAgICAgICAgcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpICogMTsKICAgIHJldHVybiBmIC8gLTE7Cn0KCmZsb2F0NCBSR1gyKGZsb2F0MiB4eSkgewogICAgZmxvYXQyIGNodW5rX3NpemUgPSBpVmlzaWJsZVJlY3Quenc7CiAgICBmbG9hdDQgY29sb3IgPSBpQ2h1bmsuZXZhbCh4eSk7CgogICAgaWYgKGNodW5rX3NpemUueCAqIGNodW5rX3NpemUueSA8IE1JTl9BUkVBKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmIChjaHVua19zaXplLnkgPCBNSU5fU1RSSVAgfHwgY2h1bmtfc2l6ZS54IDwgTUlOX1NUUklQKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIGlmICh4eS54IDwgTUFSR0lOIHx8IHh5LnggPiAoY2h1bmtfc2l6ZS54IC0gTUFSR0lOKSB8fAogICAgICAgIHh5LnkgPCBNQVJHSU4gfHwgeHkueSA+IChjaHVua19zaXplLnkgLSBNQVJHSU4pKSB7CiAgICAgICAgcmV0dXJuIGNvbG9yOwogICAgfQoKICAgIHJldHVybiBmbG9hdDQoc2hhcnBlbih4eSksIDEpOwp9CgppbmxpbmUgZmxvYXQzIG1pbjN2KGZsb2F0MyB4LCBmbG9hdDMgeSwgZmxvYXQzIHopIHsKCXJldHVybiBtaW4oeCwgbWluKHksIHopKTsKfQoKaW5saW5lIGZsb2F0MyBtYXgzdihmbG9hdDMgeCwgZmxvYXQzIHksIGZsb2F0MyB6KSB7CglyZXR1cm4gbWF4KHgsIG1heCh5LCB6KSk7Cn0KCmZsb2F0MyBSR1gzKGZsb2F0MiB4eSwgZmxvYXQgc3RyZW5ndGgpIHsKICAgIGZsb2F0MyBhID0gcGl4ZWwoeHksIGZsb2F0MigtMSwgLTEpKTsKICAgIGZsb2F0MyBiID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgLTEpKTsKICAgIGZsb2F0MyBjID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgLTEpKTsKCiAgICBmbG9hdDMgZCA9IHBpeGVsKHh5LCBmbG9hdDIoLTEsIDApKTsKICAgIGZsb2F0MyBlID0gcGl4ZWwoeHksIGZsb2F0MiggMCwgMCkpOwogICAgZmxvYXQzIGYgPSBwaXhlbCh4eSwgZmxvYXQyKCAxLCAwKSk7CgogICAgZmxvYXQzIGcgPSBwaXhlbCh4eSwgZmxvYXQyKC0xLCAxKSk7CiAgICBmbG9hdDMgaCA9IHBpeGVsKHh5LCBmbG9hdDIoIDAsIDEpKTsKICAgIGZsb2F0MyBpID0gcGl4ZWwoeHksIGZsb2F0MiggMSwgMSkpOwoKICAgIGZsb2F0MyBtaW5fZGVmID0gbWluM3YoZCwgZSwgZik7CiAgICBmbG9hdDMgbWluX2JkZWZoID0gbWluM3YoYiwgbWluX2RlZiwgaCk7CiAgICBmbG9hdDMgbWluX2FiY2RmZ2hpID0gbWluM3YobWluM3YoYSwgbWluX2JkZWZoLCBjKSwgZywgaSk7CiAgICBmbG9hdDMgbWluM19mYWN0b3IgPSBtaW5fYmRlZmggKyBtaW5fYWJjZGZnaGk7CgogICAgZmxvYXQzIG1heF9kZWYgPSBtYXgzdihkLCBlLCBmKTsKICAgIGZsb2F0MyBtYXhfYmRlZmggPSBtYXgzdihiLCBtYXhfZGVmLCBoKTsKICAgIGZsb2F0MyBtYXhfYWJjZGZnaGkgPSBtYXgzdihtYXgzdihhLCBtaW5fYmRlZmgsIGMpLCBnLCBpKTsKICAgIGZsb2F0MyBtYXgzX2ZhY3RvciA9IG1heF9iZGVmaCArIG1heF9hYmNkZmdoaTsKCiAgICBmbG9hdDMgZmFjdG9yID0gMS4wIC8gbWF4M19mYWN0b3I7CgogICAgZmxvYXQzIGFtcCA9IHNhdHVyYXRlKG1pbihtaW4zX2ZhY3RvciwgMiAtIG1heDNfZmFjdG9yKSAqIGZhY3Rvcik7CiAgICBmbG9hdDMgYW1wX3NxcnQgPSBzcXJ0KGFtcCk7CgogICAgZmxvYXQgcGVhayA9IC0xLjAgLyAobWl4KDgsIDUsIHN0cmVuZ3RoKSk7CgogICAgZmxvYXQzIGNyb3NzX3dlaWdodHMgPSBhbXBfc3FydCAqIHBlYWs7CiAgICBmbG9hdDMgd2VpZ2h0cyA9IDEgLyAoMSArIDQgKiBjcm9zc193ZWlnaHRzKTsKCiAgICBmbG9hdDMgcmVzdWx0ID0gKChiICsgZCArIGYgKyBoKSAqIGNyb3NzX3dlaWdodHMgKyBlKSAqIHdlaWdodHM7CgogICAgcmV0dXJuIHNhdHVyYXRlKHJlc3VsdCk7Cn0KCmZsb2F0NCBtYWluKGZsb2F0MiB4eSkgewoKICAgIGZsb2F0NCBvcmlnaW5hbENvbG9yID0gaUNodW5rLmV2YWwoeHkpOwogICAgaWYgKG9yaWdpbmFsQ29sb3IuYSA8IDEpIHsKICAgICAgICByZXR1cm4gaUNodW5rLmV2YWwoeHkpOwogICAgfQoKICAgIGZsb2F0IGludGVuc2l0eSA9IGlBcmdzWzBdOwogICAgZmxvYXQgc3RyZW5ndGggPSAwOwogICAgZmxvYXQzIGNvbG9yOwoKICAgIGlmIChpbnRlbnNpdHkgPCBWX01JTiArIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMC4xMDsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfTE9XIC0gRVBTSU9OICYmIGludGVuc2l0eSA8IFZfTE9XICsgRVBTSU9OKSB7CiAgICAgICAgc3RyZW5ndGggPSAwLjMzOwogICAgICAgIGNvbG9yID0gUkdYMyh4eSwgc3RyZW5ndGgpOwoKICAgIH0gZWxzZSBpZiAoaW50ZW5zaXR5ID4gVl9NRUQgLSBFUFNJT04gJiYgaW50ZW5zaXR5IDwgVl9NRUQgKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuNTsKICAgICAgICBjb2xvciA9IFJHWDMoeHksIHN0cmVuZ3RoKTsKCiAgICB9IGVsc2UgaWYgKGludGVuc2l0eSA+IFZfSElHSCAtIEVQU0lPTiAmJiBpbnRlbnNpdHkgPCBWX0hJR0ggKyBFUFNJT04pIHsKICAgICAgICBzdHJlbmd0aCA9IDAuOTk7CiAgICAgICAgY29sb3IgPSBSR1gzKHh5LCBzdHJlbmd0aCk7CgogICAgfSBlbHNlIGlmIChpbnRlbnNpdHkgPiBWX01BWCAtIEVQU0lPTikgewogICAgICAgIHN0cmVuZ3RoID0gMTsKICAgICAgICBjb2xvciA9IFJHWDIoeHkpLnJnYjsKICAgIH0KCiAgICByZXR1cm4gZmxvYXQ0KGNvbG9yLCBvcmlnaW5hbENvbG9yLmEpOwp9) -opera-args(0.50 calc(env(-opera-accent-color-r, 255)/255) calc(env(-opera-accent-color-g, 255)/255) calc(env(-opera-accent-color-b, 255)/255)));
+        }
+    </style>
+    <style type="text/css"></style>
+    <style>
+        [_nghost-ng-c2697620354] {
+            font-family: Open Sans, sans-serif;
+            color: #121212
+        }
+    </style>
+</head>
 
 <body class="admin-mode">
     <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
@@ -34,8 +46,10 @@
                         </linearGradient>
                     </defs>
                     <circle cx="25" cy="25" r="23" fill="none" stroke="url(#logoGrad)" stroke-width="2"></circle>
-                    <path d="M30 12C26 12 22 14 20 17C18 20 18 24 20 27L25 34L30 27C32 24 32 20 30 17" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round"></path>
-                    <path d="M15 28C17 32 21 36 25 38C29 36 33 32 35 28" fill="none" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M30 12C26 12 22 14 20 17C18 20 18 24 20 27L25 34L30 27C32 24 32 20 30 17" fill="none"
+                        stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round"></path>
+                    <path d="M15 28C17 32 21 36 25 38C29 36 33 32 35 28" fill="none" stroke="url(#logoGrad)"
+                        stroke-width="2" stroke-linecap="round"></path>
                     <circle cx="25" cy="22" r="3" fill="url(#logoGrad)"></circle>
                 </svg>
                 <span class="logo-text">Samorząd <span class="logo-accent">dla Młodych</span></span>
@@ -60,127 +74,367 @@
     <section class="hero" id="hero">
         <div class="hero-bg">
             <div class="hero-particles" id="heroParticles">
-                <div class="particle" style="left: 30.5942%; width: 3.09996px; height: 3.09996px; animation-delay: 4.43816s; animation-duration: 6.0379s;">
+                <div class="particle"
+                    style="left: 30.5942%; width: 3.09996px; height: 3.09996px; animation-delay: 4.43816s; animation-duration: 6.0379s;">
                 </div>
-                <div class="particle" style="left: 65.0209%; width: 3.52089px; height: 3.52089px; animation-delay: 4.72775s; animation-duration: 5.22543s;">
+                <div class="particle"
+                    style="left: 65.0209%; width: 3.52089px; height: 3.52089px; animation-delay: 4.72775s; animation-duration: 5.22543s;">
                 </div>
-                <div class="particle" style="left: 99.7453%; width: 3.75866px; height: 3.75866px; animation-delay: 0.0668307s; animation-duration: 6.27127s;">
+                <div class="particle"
+                    style="left: 99.7453%; width: 3.75866px; height: 3.75866px; animation-delay: 0.0668307s; animation-duration: 6.27127s;">
                 </div>
-                <div class="particle" style="left: 29.4481%; width: 3.85395px; height: 3.85395px; animation-delay: 1.68256s; animation-duration: 7.12159s;">
+                <div class="particle"
+                    style="left: 29.4481%; width: 3.85395px; height: 3.85395px; animation-delay: 1.68256s; animation-duration: 7.12159s;">
                 </div>
-                <div class="particle" style="left: 12.1209%; width: 2.59002px; height: 2.59002px; animation-delay: 1.90325s; animation-duration: 4.33849s;">
+                <div class="particle"
+                    style="left: 12.1209%; width: 2.59002px; height: 2.59002px; animation-delay: 1.90325s; animation-duration: 4.33849s;">
                 </div>
-                <div class="particle" style="left: 55.9657%; width: 1.67037px; height: 1.67037px; animation-delay: 3.24251s; animation-duration: 7.04276s;">
+                <div class="particle"
+                    style="left: 55.9657%; width: 1.67037px; height: 1.67037px; animation-delay: 3.24251s; animation-duration: 7.04276s;">
                 </div>
-                <div class="particle" style="left: 43.2457%; width: 2.85539px; height: 2.85539px; animation-delay: 2.92038s; animation-duration: 5.95591s;">
+                <div class="particle"
+                    style="left: 43.2457%; width: 2.85539px; height: 2.85539px; animation-delay: 2.92038s; animation-duration: 5.95591s;">
                 </div>
-                <div class="particle" style="left: 86.2203%; width: 1.78459px; height: 1.78459px; animation-delay: 5.62822s; animation-duration: 7.02884s;">
+                <div class="particle"
+                    style="left: 86.2203%; width: 1.78459px; height: 1.78459px; animation-delay: 5.62822s; animation-duration: 7.02884s;">
                 </div>
-                <div class="particle" style="left: 46.5108%; width: 2.21489px; height: 2.21489px; animation-delay: 0.985866s; animation-duration: 6.5475s;">
+                <div class="particle"
+                    style="left: 46.5108%; width: 2.21489px; height: 2.21489px; animation-delay: 0.985866s; animation-duration: 6.5475s;">
                 </div>
-                <div class="particle" style="left: 28.8727%; width: 2.20635px; height: 2.20635px; animation-delay: 3.2956s; animation-duration: 4.25994s;">
+                <div class="particle"
+                    style="left: 28.8727%; width: 2.20635px; height: 2.20635px; animation-delay: 3.2956s; animation-duration: 4.25994s;">
                 </div>
-                <div class="particle" style="left: 34.4819%; width: 2.71831px; height: 2.71831px; animation-delay: 4.87469s; animation-duration: 6.39126s;">
+                <div class="particle"
+                    style="left: 34.4819%; width: 2.71831px; height: 2.71831px; animation-delay: 4.87469s; animation-duration: 6.39126s;">
                 </div>
-                <div class="particle" style="left: 19.5818%; width: 2.01556px; height: 2.01556px; animation-delay: 5.63012s; animation-duration: 5.85318s;">
+                <div class="particle"
+                    style="left: 19.5818%; width: 2.01556px; height: 2.01556px; animation-delay: 5.63012s; animation-duration: 5.85318s;">
                 </div>
-                <div class="particle" style="left: 99.7474%; width: 3.94858px; height: 3.94858px; animation-delay: 5.84319s; animation-duration: 5.83528s;">
+                <div class="particle"
+                    style="left: 99.7474%; width: 3.94858px; height: 3.94858px; animation-delay: 5.84319s; animation-duration: 5.83528s;">
                 </div>
-                <div class="particle" style="left: 50.4602%; width: 3.11226px; height: 3.11226px; animation-delay: 2.58259s; animation-duration: 5.08605s;">
+                <div class="particle"
+                    style="left: 50.4602%; width: 3.11226px; height: 3.11226px; animation-delay: 2.58259s; animation-duration: 5.08605s;">
                 </div>
-                <div class="particle" style="left: 12.7121%; width: 2.31899px; height: 2.31899px; animation-delay: 3.3277s; animation-duration: 4.78782s;">
+                <div class="particle"
+                    style="left: 12.7121%; width: 2.31899px; height: 2.31899px; animation-delay: 3.3277s; animation-duration: 4.78782s;">
                 </div>
-                <div class="particle" style="left: 32.4278%; width: 3.29904px; height: 3.29904px; animation-delay: 4.72206s; animation-duration: 5.50145s;">
+                <div class="particle"
+                    style="left: 32.4278%; width: 3.29904px; height: 3.29904px; animation-delay: 4.72206s; animation-duration: 5.50145s;">
                 </div>
-                <div class="particle" style="left: 75.7519%; width: 1.10364px; height: 1.10364px; animation-delay: 4.60976s; animation-duration: 7.9022s;">
+                <div class="particle"
+                    style="left: 75.7519%; width: 1.10364px; height: 1.10364px; animation-delay: 4.60976s; animation-duration: 7.9022s;">
                 </div>
-                <div class="particle" style="left: 85.0591%; width: 1.66238px; height: 1.66238px; animation-delay: 2.62885s; animation-duration: 7.89941s;">
+                <div class="particle"
+                    style="left: 85.0591%; width: 1.66238px; height: 1.66238px; animation-delay: 2.62885s; animation-duration: 7.89941s;">
                 </div>
-                <div class="particle" style="left: 70.3578%; width: 1.34503px; height: 1.34503px; animation-delay: 0.843657s; animation-duration: 7.96211s;">
+                <div class="particle"
+                    style="left: 70.3578%; width: 1.34503px; height: 1.34503px; animation-delay: 0.843657s; animation-duration: 7.96211s;">
                 </div>
-                <div class="particle" style="left: 74.6153%; width: 1.45144px; height: 1.45144px; animation-delay: 3.05075s; animation-duration: 7.19193s;">
+                <div class="particle"
+                    style="left: 74.6153%; width: 1.45144px; height: 1.45144px; animation-delay: 3.05075s; animation-duration: 7.19193s;">
                 </div>
-                <div class="particle" style="left: 34.9901%; width: 3.37902px; height: 3.37902px; animation-delay: 5.79672s; animation-duration: 6.69064s;">
+                <div class="particle"
+                    style="left: 34.9901%; width: 3.37902px; height: 3.37902px; animation-delay: 5.79672s; animation-duration: 6.69064s;">
                 </div>
-                <div class="particle" style="left: 28.1297%; width: 1.43359px; height: 1.43359px; animation-delay: 4.93829s; animation-duration: 7.45088s;">
+                <div class="particle"
+                    style="left: 28.1297%; width: 1.43359px; height: 1.43359px; animation-delay: 4.93829s; animation-duration: 7.45088s;">
                 </div>
-                <div class="particle" style="left: 1.21822%; width: 2.48022px; height: 2.48022px; animation-delay: 3.10031s; animation-duration: 6.29774s;">
+                <div class="particle"
+                    style="left: 1.21822%; width: 2.48022px; height: 2.48022px; animation-delay: 3.10031s; animation-duration: 6.29774s;">
                 </div>
-                <div class="particle" style="left: 25.0269%; width: 2.57445px; height: 2.57445px; animation-delay: 4.58787s; animation-duration: 6.99748s;">
+                <div class="particle"
+                    style="left: 25.0269%; width: 2.57445px; height: 2.57445px; animation-delay: 4.58787s; animation-duration: 6.99748s;">
                 </div>
-                <div class="particle" style="left: 26.176%; width: 1.13293px; height: 1.13293px; animation-delay: 5.16859s; animation-duration: 6.65411s;">
+                <div class="particle"
+                    style="left: 26.176%; width: 1.13293px; height: 1.13293px; animation-delay: 5.16859s; animation-duration: 6.65411s;">
                 </div>
-                <div class="particle" style="left: 43.9423%; width: 2.80635px; height: 2.80635px; animation-delay: 4.69723s; animation-duration: 6.74416s;">
+                <div class="particle"
+                    style="left: 43.9423%; width: 2.80635px; height: 2.80635px; animation-delay: 4.69723s; animation-duration: 6.74416s;">
                 </div>
-                <div class="particle" style="left: 86.2652%; width: 2.94045px; height: 2.94045px; animation-delay: 1.31652s; animation-duration: 6.77932s;">
+                <div class="particle"
+                    style="left: 86.2652%; width: 2.94045px; height: 2.94045px; animation-delay: 1.31652s; animation-duration: 6.77932s;">
                 </div>
-                <div class="particle" style="left: 25.3126%; width: 3.65265px; height: 3.65265px; animation-delay: 1.1755s; animation-duration: 4.50003s;">
+                <div class="particle"
+                    style="left: 25.3126%; width: 3.65265px; height: 3.65265px; animation-delay: 1.1755s; animation-duration: 4.50003s;">
                 </div>
-                <div class="particle" style="left: 85.1756%; width: 3.02633px; height: 3.02633px; animation-delay: 2.91498s; animation-duration: 5.43013s;">
+                <div class="particle"
+                    style="left: 85.1756%; width: 3.02633px; height: 3.02633px; animation-delay: 2.91498s; animation-duration: 5.43013s;">
                 </div>
-                <div class="particle" style="left: 62.0532%; width: 2.98959px; height: 2.98959px; animation-delay: 0.998564s; animation-duration: 4.63702s;">
+                <div class="particle"
+                    style="left: 62.0532%; width: 2.98959px; height: 2.98959px; animation-delay: 0.998564s; animation-duration: 4.63702s;">
                 </div>
-                <div class="particle" style="left: 28.6624%; width: 1.30859px; height: 1.30859px; animation-delay: 0.921227s; animation-duration: 5.52369s;">
+                <div class="particle"
+                    style="left: 28.6624%; width: 1.30859px; height: 1.30859px; animation-delay: 0.921227s; animation-duration: 5.52369s;">
                 </div>
-                <div class="particle" style="left: 87.8097%; width: 3.8334px; height: 3.8334px; animation-delay: 2.45357s; animation-duration: 4.60125s;">
+                <div class="particle"
+                    style="left: 87.8097%; width: 3.8334px; height: 3.8334px; animation-delay: 2.45357s; animation-duration: 4.60125s;">
                 </div>
-                <div class="particle" style="left: 58.218%; width: 2.21611px; height: 2.21611px; animation-delay: 5.7398s; animation-duration: 5.55218s;">
+                <div class="particle"
+                    style="left: 58.218%; width: 2.21611px; height: 2.21611px; animation-delay: 5.7398s; animation-duration: 5.55218s;">
                 </div>
-                <div class="particle" style="left: 1.61584%; width: 2.13347px; height: 2.13347px; animation-delay: 2.05345s; animation-duration: 7.04961s;">
+                <div class="particle"
+                    style="left: 1.61584%; width: 2.13347px; height: 2.13347px; animation-delay: 2.05345s; animation-duration: 7.04961s;">
                 </div>
-                <div class="particle" style="left: 45.8213%; width: 1.95553px; height: 1.95553px; animation-delay: 0.417692s; animation-duration: 5.59527s;">
+                <div class="particle"
+                    style="left: 45.8213%; width: 1.95553px; height: 1.95553px; animation-delay: 0.417692s; animation-duration: 5.59527s;">
                 </div>
-                <div class="particle" style="left: 34.4564%; width: 1.0862px; height: 1.0862px; animation-delay: 2.42901s; animation-duration: 4.46865s;">
+                <div class="particle"
+                    style="left: 34.4564%; width: 1.0862px; height: 1.0862px; animation-delay: 2.42901s; animation-duration: 4.46865s;">
                 </div>
-                <div class="particle" style="left: 21.8413%; width: 2.63162px; height: 2.63162px; animation-delay: 5.97646s; animation-duration: 5.60198s;">
+                <div class="particle"
+                    style="left: 21.8413%; width: 2.63162px; height: 2.63162px; animation-delay: 5.97646s; animation-duration: 5.60198s;">
                 </div>
-                <div class="particle" style="left: 65.5957%; width: 3.74178px; height: 3.74178px; animation-delay: 4.57939s; animation-duration: 7.66727s;">
+                <div class="particle"
+                    style="left: 65.5957%; width: 3.74178px; height: 3.74178px; animation-delay: 4.57939s; animation-duration: 7.66727s;">
                 </div>
-                <div class="particle" style="left: 96.5804%; width: 1.51193px; height: 1.51193px; animation-delay: 3.96634s; animation-duration: 5.90867s;">
+                <div class="particle"
+                    style="left: 96.5804%; width: 1.51193px; height: 1.51193px; animation-delay: 3.96634s; animation-duration: 5.90867s;">
                 </div>
-                <div class="particle" style="left: 77.4677%; width: 2.68178px; height: 2.68178px; animation-delay: 5.72575s; animation-duration: 5.61189s;">
+                <div class="particle"
+                    style="left: 77.4677%; width: 2.68178px; height: 2.68178px; animation-delay: 5.72575s; animation-duration: 5.61189s;">
                 </div>
-                <div class="particle" style="left: 82.1825%; width: 2.30907px; height: 2.30907px; animation-delay: 1.37521s; animation-duration: 4.38176s;">
+                <div class="particle"
+                    style="left: 82.1825%; width: 2.30907px; height: 2.30907px; animation-delay: 1.37521s; animation-duration: 4.38176s;">
                 </div>
-                <div class="particle" style="left: 13.7211%; width: 3.21281px; height: 3.21281px; animation-delay: 1.86166s; animation-duration: 4.35437s;">
+                <div class="particle"
+                    style="left: 13.7211%; width: 3.21281px; height: 3.21281px; animation-delay: 1.86166s; animation-duration: 4.35437s;">
                 </div>
-                <div class="particle" style="left: 1.78366%; width: 2.55508px; height: 2.55508px; animation-delay: 0.52708s; animation-duration: 5.2947s;">
+                <div class="particle"
+                    style="left: 1.78366%; width: 2.55508px; height: 2.55508px; animation-delay: 0.52708s; animation-duration: 5.2947s;">
                 </div>
-                <div class="particle" style="left: 68.4207%; width: 3.47552px; height: 3.47552px; animation-delay: 2.9772s; animation-duration: 6.35204s;">
+                <div class="particle"
+                    style="left: 68.4207%; width: 3.47552px; height: 3.47552px; animation-delay: 2.9772s; animation-duration: 6.35204s;">
                 </div>
-                <div class="particle" style="left: 27.8096%; width: 2.73644px; height: 2.73644px; animation-delay: 5.94522s; animation-duration: 6.28726s;">
+                <div class="particle"
+                    style="left: 27.8096%; width: 2.73644px; height: 2.73644px; animation-delay: 5.94522s; animation-duration: 6.28726s;">
                 </div>
-                <div class="particle" style="left: 25.815%; width: 3.61749px; height: 3.61749px; animation-delay: 2.20358s; animation-duration: 4.26879s;">
+                <div class="particle"
+                    style="left: 25.815%; width: 3.61749px; height: 3.61749px; animation-delay: 2.20358s; animation-duration: 4.26879s;">
                 </div>
-                <div class="particle" style="left: 42.6433%; width: 2.45942px; height: 2.45942px; animation-delay: 2.16285s; animation-duration: 5.07158s;">
+                <div class="particle"
+                    style="left: 42.6433%; width: 2.45942px; height: 2.45942px; animation-delay: 2.16285s; animation-duration: 5.07158s;">
                 </div>
-                <div class="particle" style="left: 36.0764%; width: 2.32816px; height: 2.32816px; animation-delay: 1.4174s; animation-duration: 7.47669s;">
+                <div class="particle"
+                    style="left: 36.0764%; width: 2.32816px; height: 2.32816px; animation-delay: 1.4174s; animation-duration: 7.47669s;">
                 </div>
-                <div class="particle" style="left: 35.2071%; width: 3.95808px; height: 3.95808px; animation-delay: 2.96772s; animation-duration: 5.73396s;">
+                <div class="particle"
+                    style="left: 35.2071%; width: 3.95808px; height: 3.95808px; animation-delay: 2.96772s; animation-duration: 5.73396s;">
                 </div>
-                <div class="particle" style="left: 62.9412%; width: 3.13109px; height: 3.13109px; animation-delay: 3.8821s; animation-duration: 5.02134s;">
+                <div class="particle"
+                    style="left: 62.9412%; width: 3.13109px; height: 3.13109px; animation-delay: 3.8821s; animation-duration: 5.02134s;">
                 </div>
-                <div class="particle" style="left: 61.6378%; width: 2.63473px; height: 2.63473px; animation-delay: 5.84328s; animation-duration: 5.70168s;">
+                <div class="particle"
+                    style="left: 61.6378%; width: 2.63473px; height: 2.63473px; animation-delay: 5.84328s; animation-duration: 5.70168s;">
                 </div>
-                <div class="particle" style="left: 53.044%; width: 3.82703px; height: 3.82703px; animation-delay: 1.36392s; animation-duration: 4.36829s;">
+                <div class="particle"
+                    style="left: 53.044%; width: 3.82703px; height: 3.82703px; animation-delay: 1.36392s; animation-duration: 4.36829s;">
                 </div>
-                <div class="particle" style="left: 70.5044%; width: 3.90636px; height: 3.90636px; animation-delay: 3.88519s; animation-duration: 4.918s;">
+                <div class="particle"
+                    style="left: 70.5044%; width: 3.90636px; height: 3.90636px; animation-delay: 3.88519s; animation-duration: 4.918s;">
                 </div>
-                <div class="particle" style="left: 20.1058%; width: 2.51331px; height: 2.51331px; animation-delay: 2.24206s; animation-duration: 7.28316s;">
+                <div class="particle"
+                    style="left: 20.1058%; width: 2.51331px; height: 2.51331px; animation-delay: 2.24206s; animation-duration: 7.28316s;">
                 </div>
-                <div class="particle" style="left: 72.0704%; width: 3.95812px; height: 3.95812px; animation-delay: 3.31576s; animation-duration: 5.44697s;">
+                <div class="particle"
+                    style="left: 72.0704%; width: 3.95812px; height: 3.95812px; animation-delay: 3.31576s; animation-duration: 5.44697s;">
                 </div>
-                <div class="particle" style="left: 20.0465%; width: 2.56966px; height: 2.56966px; animation-delay: 4.2842s; animation-duration: 6.84532s;">
+                <div class="particle"
+                    style="left: 20.0465%; width: 2.56966px; height: 2.56966px; animation-delay: 4.2842s; animation-duration: 6.84532s;">
                 </div>
-                <div class="particle" style="left: 64.9695%; width: 2.70982px; height: 2.70982px; animation-delay: 2.26456s; animation-duration: 6.48832s;">
+                <div class="particle"
+                    style="left: 64.9695%; width: 2.70982px; height: 2.70982px; animation-delay: 2.26456s; animation-duration: 6.48832s;">
                 </div>
-                <div class="particle" style="left: 40.6583%; width: 3.34914px; height: 3.34914px; animation-delay: 0.795086s; animation-duration: 5.70144s;">
+                <div class="particle"
+                    style="left: 40.6583%; width: 3.34914px; height: 3.34914px; animation-delay: 0.795086s; animation-duration: 5.70144s;">
                 </div>
-                <div class="particle" style="left: 24.532%; width: 2.66534px; height: 2.66534px; animation-delay: 0.668659s; animation-duration: 5.21141s;">
+                <div class="particle"
+                    style="left: 24.532%; width: 2.66534px; height: 2.66534px; animation-delay: 0.668659s; animation-duration: 5.21141s;">
                 </div>
-                <div class="particle" style="left: 1.32528%; width: 3.71735px; height: 3.71735px; animation-delay: 0.738164s; animation-duration: 7.6974s;">
+                <div class="particle"
+                    style="left: 1.32528%; width: 3.71735px; height: 3.71735px; animation-delay: 0.738164s; animation-duration: 7.6974s;">
                 </div>
-            <div class="particle" style="left: 68.1072%; width: 1.87751px; height: 1.87751px; animation-delay: 2.25446s; animation-duration: 4.87975s;"></div><div class="particle" style="left: 86.4115%; width: 1.18983px; height: 1.18983px; animation-delay: 1.04129s; animation-duration: 5.7344s;"></div><div class="particle" style="left: 75.4531%; width: 2.64375px; height: 2.64375px; animation-delay: 3.04881s; animation-duration: 5.97895s;"></div><div class="particle" style="left: 26.3605%; width: 3.96534px; height: 3.96534px; animation-delay: 4.23629s; animation-duration: 7.66156s;"></div><div class="particle" style="left: 42.6082%; width: 3.2143px; height: 3.2143px; animation-delay: 1.16646s; animation-duration: 4.27975s;"></div><div class="particle" style="left: 65.4957%; width: 2.99758px; height: 2.99758px; animation-delay: 4.96626s; animation-duration: 5.85165s;"></div><div class="particle" style="left: 71.6199%; width: 3.86529px; height: 3.86529px; animation-delay: 4.30724s; animation-duration: 6.48555s;"></div><div class="particle" style="left: 80.339%; width: 1.47724px; height: 1.47724px; animation-delay: 2.27565s; animation-duration: 6.98135s;"></div><div class="particle" style="left: 14.6475%; width: 1.09128px; height: 1.09128px; animation-delay: 1.97115s; animation-duration: 6.99793s;"></div><div class="particle" style="left: 84.4747%; width: 1.76944px; height: 1.76944px; animation-delay: 2.48668s; animation-duration: 4.65052s;"></div><div class="particle" style="left: 24.2513%; width: 1.6479px; height: 1.6479px; animation-delay: 2.67334s; animation-duration: 5.26153s;"></div><div class="particle" style="left: 31.9159%; width: 2.70849px; height: 2.70849px; animation-delay: 2.25262s; animation-duration: 7.44709s;"></div><div class="particle" style="left: 46.0149%; width: 1.86686px; height: 1.86686px; animation-delay: 1.16591s; animation-duration: 6.39272s;"></div><div class="particle" style="left: 78.674%; width: 2.13294px; height: 2.13294px; animation-delay: 1.51241s; animation-duration: 5.33824s;"></div><div class="particle" style="left: 70.1669%; width: 1.12388px; height: 1.12388px; animation-delay: 3.3248s; animation-duration: 6.21677s;"></div><div class="particle" style="left: 36.7528%; width: 3.6201px; height: 3.6201px; animation-delay: 3.18507s; animation-duration: 5.07586s;"></div><div class="particle" style="left: 32.3479%; width: 2.77072px; height: 2.77072px; animation-delay: 2.89527s; animation-duration: 5.89957s;"></div><div class="particle" style="left: 76.91%; width: 3.59892px; height: 3.59892px; animation-delay: 1.27867s; animation-duration: 7.74818s;"></div><div class="particle" style="left: 55.166%; width: 2.01481px; height: 2.01481px; animation-delay: 5.41864s; animation-duration: 7.2721s;"></div><div class="particle" style="left: 8.18225%; width: 2.75585px; height: 2.75585px; animation-delay: 2.33522s; animation-duration: 7.53455s;"></div><div class="particle" style="left: 35.5652%; width: 1.34023px; height: 1.34023px; animation-delay: 0.0742473s; animation-duration: 4.76465s;"></div><div class="particle" style="left: 22.8416%; width: 1.61757px; height: 1.61757px; animation-delay: 4.08607s; animation-duration: 6.02627s;"></div><div class="particle" style="left: 25.2506%; width: 3.28051px; height: 3.28051px; animation-delay: 1.29253s; animation-duration: 6.06727s;"></div><div class="particle" style="left: 70.1816%; width: 1.30036px; height: 1.30036px; animation-delay: 3.79357s; animation-duration: 5.09398s;"></div><div class="particle" style="left: 47.5739%; width: 2.47298px; height: 2.47298px; animation-delay: 4.68288s; animation-duration: 7.48282s;"></div><div class="particle" style="left: 0.888373%; width: 2.93079px; height: 2.93079px; animation-delay: 1.2426s; animation-duration: 7.70485s;"></div><div class="particle" style="left: 85.9662%; width: 3.21788px; height: 3.21788px; animation-delay: 0.524171s; animation-duration: 6.44831s;"></div><div class="particle" style="left: 23.9493%; width: 1.98202px; height: 1.98202px; animation-delay: 5.56872s; animation-duration: 7.14893s;"></div><div class="particle" style="left: 42.3585%; width: 2.94433px; height: 2.94433px; animation-delay: 5.3419s; animation-duration: 5.89931s;"></div><div class="particle" style="left: 28.3765%; width: 3.66172px; height: 3.66172px; animation-delay: 4.51293s; animation-duration: 7.42657s;"></div><div class="particle" style="left: 46.9949%; width: 3.54303px; height: 3.54303px; animation-delay: 2.07148s; animation-duration: 7.02681s;"></div><div class="particle" style="left: 71.4817%; width: 2.63432px; height: 2.63432px; animation-delay: 5.79313s; animation-duration: 7.49969s;"></div><div class="particle" style="left: 85.2592%; width: 2.7004px; height: 2.7004px; animation-delay: 1.95637s; animation-duration: 5.88652s;"></div><div class="particle" style="left: 88.4648%; width: 3.40471px; height: 3.40471px; animation-delay: 2.44407s; animation-duration: 5.64431s;"></div><div class="particle" style="left: 62.4792%; width: 2.01379px; height: 2.01379px; animation-delay: 4.8505s; animation-duration: 4.13426s;"></div><div class="particle" style="left: 13.6872%; width: 3.17199px; height: 3.17199px; animation-delay: 0.205297s; animation-duration: 7.62641s;"></div><div class="particle" style="left: 1.70033%; width: 3.87253px; height: 3.87253px; animation-delay: 4.35425s; animation-duration: 7.17287s;"></div><div class="particle" style="left: 37.1005%; width: 1.37395px; height: 1.37395px; animation-delay: 2.72298s; animation-duration: 6.63623s;"></div><div class="particle" style="left: 26.9594%; width: 2.62865px; height: 2.62865px; animation-delay: 5.8857s; animation-duration: 7.9713s;"></div><div class="particle" style="left: 61.4113%; width: 3.88233px; height: 3.88233px; animation-delay: 2.80087s; animation-duration: 4.9243s;"></div><div class="particle" style="left: 51.9551%; width: 3.47992px; height: 3.47992px; animation-delay: 1.51235s; animation-duration: 4.03332s;"></div><div class="particle" style="left: 11.8085%; width: 3.64948px; height: 3.64948px; animation-delay: 3.76098s; animation-duration: 6.47704s;"></div><div class="particle" style="left: 28.4341%; width: 1.76091px; height: 1.76091px; animation-delay: 4.70899s; animation-duration: 7.23317s;"></div><div class="particle" style="left: 15.7034%; width: 3.65761px; height: 3.65761px; animation-delay: 5.36822s; animation-duration: 7.48039s;"></div><div class="particle" style="left: 56.546%; width: 3.59497px; height: 3.59497px; animation-delay: 0.0429556s; animation-duration: 7.19681s;"></div><div class="particle" style="left: 70.2183%; width: 2.66277px; height: 2.66277px; animation-delay: 5.1989s; animation-duration: 6.40541s;"></div><div class="particle" style="left: 1.53004%; width: 3.12655px; height: 3.12655px; animation-delay: 0.376175s; animation-duration: 5.20952s;"></div><div class="particle" style="left: 53.0748%; width: 1.16541px; height: 1.16541px; animation-delay: 3.94556s; animation-duration: 5.34012s;"></div><div class="particle" style="left: 3.45215%; width: 1.92913px; height: 1.92913px; animation-delay: 3.67813s; animation-duration: 5.71624s;"></div><div class="particle" style="left: 95.775%; width: 1.08984px; height: 1.08984px; animation-delay: 1.85587s; animation-duration: 7.14205s;"></div><div class="particle" style="left: 34.0742%; width: 2.19472px; height: 2.19472px; animation-delay: 5.62319s; animation-duration: 7.41922s;"></div><div class="particle" style="left: 41.6523%; width: 2.41355px; height: 2.41355px; animation-delay: 4.30315s; animation-duration: 6.61962s;"></div><div class="particle" style="left: 21.6898%; width: 3.24877px; height: 3.24877px; animation-delay: 5.43794s; animation-duration: 5.19127s;"></div><div class="particle" style="left: 71.3189%; width: 1.30192px; height: 1.30192px; animation-delay: 2.79053s; animation-duration: 4.32811s;"></div><div class="particle" style="left: 94.5256%; width: 1.14402px; height: 1.14402px; animation-delay: 4.25475s; animation-duration: 5.8106s;"></div><div class="particle" style="left: 34.7537%; width: 1.4075px; height: 1.4075px; animation-delay: 0.104016s; animation-duration: 6.41539s;"></div><div class="particle" style="left: 93.9105%; width: 1.58207px; height: 1.58207px; animation-delay: 1.89402s; animation-duration: 5.11438s;"></div><div class="particle" style="left: 18.3672%; width: 3.98326px; height: 3.98326px; animation-delay: 2.07018s; animation-duration: 6.19419s;"></div><div class="particle" style="left: 39.9948%; width: 3.37746px; height: 3.37746px; animation-delay: 4.13607s; animation-duration: 4.42013s;"></div><div class="particle" style="left: 79.9462%; width: 3.90886px; height: 3.90886px; animation-delay: 1.34106s; animation-duration: 5.26453s;"></div></div>
+                <div class="particle"
+                    style="left: 68.1072%; width: 1.87751px; height: 1.87751px; animation-delay: 2.25446s; animation-duration: 4.87975s;">
+                </div>
+                <div class="particle"
+                    style="left: 86.4115%; width: 1.18983px; height: 1.18983px; animation-delay: 1.04129s; animation-duration: 5.7344s;">
+                </div>
+                <div class="particle"
+                    style="left: 75.4531%; width: 2.64375px; height: 2.64375px; animation-delay: 3.04881s; animation-duration: 5.97895s;">
+                </div>
+                <div class="particle"
+                    style="left: 26.3605%; width: 3.96534px; height: 3.96534px; animation-delay: 4.23629s; animation-duration: 7.66156s;">
+                </div>
+                <div class="particle"
+                    style="left: 42.6082%; width: 3.2143px; height: 3.2143px; animation-delay: 1.16646s; animation-duration: 4.27975s;">
+                </div>
+                <div class="particle"
+                    style="left: 65.4957%; width: 2.99758px; height: 2.99758px; animation-delay: 4.96626s; animation-duration: 5.85165s;">
+                </div>
+                <div class="particle"
+                    style="left: 71.6199%; width: 3.86529px; height: 3.86529px; animation-delay: 4.30724s; animation-duration: 6.48555s;">
+                </div>
+                <div class="particle"
+                    style="left: 80.339%; width: 1.47724px; height: 1.47724px; animation-delay: 2.27565s; animation-duration: 6.98135s;">
+                </div>
+                <div class="particle"
+                    style="left: 14.6475%; width: 1.09128px; height: 1.09128px; animation-delay: 1.97115s; animation-duration: 6.99793s;">
+                </div>
+                <div class="particle"
+                    style="left: 84.4747%; width: 1.76944px; height: 1.76944px; animation-delay: 2.48668s; animation-duration: 4.65052s;">
+                </div>
+                <div class="particle"
+                    style="left: 24.2513%; width: 1.6479px; height: 1.6479px; animation-delay: 2.67334s; animation-duration: 5.26153s;">
+                </div>
+                <div class="particle"
+                    style="left: 31.9159%; width: 2.70849px; height: 2.70849px; animation-delay: 2.25262s; animation-duration: 7.44709s;">
+                </div>
+                <div class="particle"
+                    style="left: 46.0149%; width: 1.86686px; height: 1.86686px; animation-delay: 1.16591s; animation-duration: 6.39272s;">
+                </div>
+                <div class="particle"
+                    style="left: 78.674%; width: 2.13294px; height: 2.13294px; animation-delay: 1.51241s; animation-duration: 5.33824s;">
+                </div>
+                <div class="particle"
+                    style="left: 70.1669%; width: 1.12388px; height: 1.12388px; animation-delay: 3.3248s; animation-duration: 6.21677s;">
+                </div>
+                <div class="particle"
+                    style="left: 36.7528%; width: 3.6201px; height: 3.6201px; animation-delay: 3.18507s; animation-duration: 5.07586s;">
+                </div>
+                <div class="particle"
+                    style="left: 32.3479%; width: 2.77072px; height: 2.77072px; animation-delay: 2.89527s; animation-duration: 5.89957s;">
+                </div>
+                <div class="particle"
+                    style="left: 76.91%; width: 3.59892px; height: 3.59892px; animation-delay: 1.27867s; animation-duration: 7.74818s;">
+                </div>
+                <div class="particle"
+                    style="left: 55.166%; width: 2.01481px; height: 2.01481px; animation-delay: 5.41864s; animation-duration: 7.2721s;">
+                </div>
+                <div class="particle"
+                    style="left: 8.18225%; width: 2.75585px; height: 2.75585px; animation-delay: 2.33522s; animation-duration: 7.53455s;">
+                </div>
+                <div class="particle"
+                    style="left: 35.5652%; width: 1.34023px; height: 1.34023px; animation-delay: 0.0742473s; animation-duration: 4.76465s;">
+                </div>
+                <div class="particle"
+                    style="left: 22.8416%; width: 1.61757px; height: 1.61757px; animation-delay: 4.08607s; animation-duration: 6.02627s;">
+                </div>
+                <div class="particle"
+                    style="left: 25.2506%; width: 3.28051px; height: 3.28051px; animation-delay: 1.29253s; animation-duration: 6.06727s;">
+                </div>
+                <div class="particle"
+                    style="left: 70.1816%; width: 1.30036px; height: 1.30036px; animation-delay: 3.79357s; animation-duration: 5.09398s;">
+                </div>
+                <div class="particle"
+                    style="left: 47.5739%; width: 2.47298px; height: 2.47298px; animation-delay: 4.68288s; animation-duration: 7.48282s;">
+                </div>
+                <div class="particle"
+                    style="left: 0.888373%; width: 2.93079px; height: 2.93079px; animation-delay: 1.2426s; animation-duration: 7.70485s;">
+                </div>
+                <div class="particle"
+                    style="left: 85.9662%; width: 3.21788px; height: 3.21788px; animation-delay: 0.524171s; animation-duration: 6.44831s;">
+                </div>
+                <div class="particle"
+                    style="left: 23.9493%; width: 1.98202px; height: 1.98202px; animation-delay: 5.56872s; animation-duration: 7.14893s;">
+                </div>
+                <div class="particle"
+                    style="left: 42.3585%; width: 2.94433px; height: 2.94433px; animation-delay: 5.3419s; animation-duration: 5.89931s;">
+                </div>
+                <div class="particle"
+                    style="left: 28.3765%; width: 3.66172px; height: 3.66172px; animation-delay: 4.51293s; animation-duration: 7.42657s;">
+                </div>
+                <div class="particle"
+                    style="left: 46.9949%; width: 3.54303px; height: 3.54303px; animation-delay: 2.07148s; animation-duration: 7.02681s;">
+                </div>
+                <div class="particle"
+                    style="left: 71.4817%; width: 2.63432px; height: 2.63432px; animation-delay: 5.79313s; animation-duration: 7.49969s;">
+                </div>
+                <div class="particle"
+                    style="left: 85.2592%; width: 2.7004px; height: 2.7004px; animation-delay: 1.95637s; animation-duration: 5.88652s;">
+                </div>
+                <div class="particle"
+                    style="left: 88.4648%; width: 3.40471px; height: 3.40471px; animation-delay: 2.44407s; animation-duration: 5.64431s;">
+                </div>
+                <div class="particle"
+                    style="left: 62.4792%; width: 2.01379px; height: 2.01379px; animation-delay: 4.8505s; animation-duration: 4.13426s;">
+                </div>
+                <div class="particle"
+                    style="left: 13.6872%; width: 3.17199px; height: 3.17199px; animation-delay: 0.205297s; animation-duration: 7.62641s;">
+                </div>
+                <div class="particle"
+                    style="left: 1.70033%; width: 3.87253px; height: 3.87253px; animation-delay: 4.35425s; animation-duration: 7.17287s;">
+                </div>
+                <div class="particle"
+                    style="left: 37.1005%; width: 1.37395px; height: 1.37395px; animation-delay: 2.72298s; animation-duration: 6.63623s;">
+                </div>
+                <div class="particle"
+                    style="left: 26.9594%; width: 2.62865px; height: 2.62865px; animation-delay: 5.8857s; animation-duration: 7.9713s;">
+                </div>
+                <div class="particle"
+                    style="left: 61.4113%; width: 3.88233px; height: 3.88233px; animation-delay: 2.80087s; animation-duration: 4.9243s;">
+                </div>
+                <div class="particle"
+                    style="left: 51.9551%; width: 3.47992px; height: 3.47992px; animation-delay: 1.51235s; animation-duration: 4.03332s;">
+                </div>
+                <div class="particle"
+                    style="left: 11.8085%; width: 3.64948px; height: 3.64948px; animation-delay: 3.76098s; animation-duration: 6.47704s;">
+                </div>
+                <div class="particle"
+                    style="left: 28.4341%; width: 1.76091px; height: 1.76091px; animation-delay: 4.70899s; animation-duration: 7.23317s;">
+                </div>
+                <div class="particle"
+                    style="left: 15.7034%; width: 3.65761px; height: 3.65761px; animation-delay: 5.36822s; animation-duration: 7.48039s;">
+                </div>
+                <div class="particle"
+                    style="left: 56.546%; width: 3.59497px; height: 3.59497px; animation-delay: 0.0429556s; animation-duration: 7.19681s;">
+                </div>
+                <div class="particle"
+                    style="left: 70.2183%; width: 2.66277px; height: 2.66277px; animation-delay: 5.1989s; animation-duration: 6.40541s;">
+                </div>
+                <div class="particle"
+                    style="left: 1.53004%; width: 3.12655px; height: 3.12655px; animation-delay: 0.376175s; animation-duration: 5.20952s;">
+                </div>
+                <div class="particle"
+                    style="left: 53.0748%; width: 1.16541px; height: 1.16541px; animation-delay: 3.94556s; animation-duration: 5.34012s;">
+                </div>
+                <div class="particle"
+                    style="left: 3.45215%; width: 1.92913px; height: 1.92913px; animation-delay: 3.67813s; animation-duration: 5.71624s;">
+                </div>
+                <div class="particle"
+                    style="left: 95.775%; width: 1.08984px; height: 1.08984px; animation-delay: 1.85587s; animation-duration: 7.14205s;">
+                </div>
+                <div class="particle"
+                    style="left: 34.0742%; width: 2.19472px; height: 2.19472px; animation-delay: 5.62319s; animation-duration: 7.41922s;">
+                </div>
+                <div class="particle"
+                    style="left: 41.6523%; width: 2.41355px; height: 2.41355px; animation-delay: 4.30315s; animation-duration: 6.61962s;">
+                </div>
+                <div class="particle"
+                    style="left: 21.6898%; width: 3.24877px; height: 3.24877px; animation-delay: 5.43794s; animation-duration: 5.19127s;">
+                </div>
+                <div class="particle"
+                    style="left: 71.3189%; width: 1.30192px; height: 1.30192px; animation-delay: 2.79053s; animation-duration: 4.32811s;">
+                </div>
+                <div class="particle"
+                    style="left: 94.5256%; width: 1.14402px; height: 1.14402px; animation-delay: 4.25475s; animation-duration: 5.8106s;">
+                </div>
+                <div class="particle"
+                    style="left: 34.7537%; width: 1.4075px; height: 1.4075px; animation-delay: 0.104016s; animation-duration: 6.41539s;">
+                </div>
+                <div class="particle"
+                    style="left: 93.9105%; width: 1.58207px; height: 1.58207px; animation-delay: 1.89402s; animation-duration: 5.11438s;">
+                </div>
+                <div class="particle"
+                    style="left: 18.3672%; width: 3.98326px; height: 3.98326px; animation-delay: 2.07018s; animation-duration: 6.19419s;">
+                </div>
+                <div class="particle"
+                    style="left: 39.9948%; width: 3.37746px; height: 3.37746px; animation-delay: 4.13607s; animation-duration: 4.42013s;">
+                </div>
+                <div class="particle"
+                    style="left: 79.9462%; width: 3.90886px; height: 3.90886px; animation-delay: 1.34106s; animation-duration: 5.26453s;">
+                </div>
+            </div>
             <div class="hero-gradient"></div>
         </div>
         <div class="hero-content">
@@ -321,7 +575,8 @@
                     <div class="mission-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            <path
+                                d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                             </path>
                         </svg>
                     </div>
@@ -350,7 +605,8 @@
                     <div class="mission-card-number">03</div>
                     <div class="mission-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
                             </polygon>
                         </svg>
                     </div>
@@ -375,7 +631,8 @@
                 <div class="action-card animate-on-scroll visible" style="position: relative;">
                     <div class="action-card-image" style="background: linear-gradient(135deg, #1E3A5F, #0A1628);">
                         <div class="action-card-overlay">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48"
+                                height="48">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -393,7 +650,8 @@
                 <div class="action-card animate-on-scroll visible" style="position: relative;">
                     <div class="action-card-image" style="background: linear-gradient(135deg, #D4A847, #B8922E);">
                         <div class="action-card-overlay">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48"
+                                height="48">
                                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                             </svg>
@@ -409,7 +667,8 @@
                 <div class="action-card animate-on-scroll visible" style="position: relative;">
                     <div class="action-card-image" style="background: linear-gradient(135deg, #2D5A8E, #1E3A5F);">
                         <div class="action-card-overlay">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48"
+                                height="48">
                                 <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                                 <line x1="8" y1="21" x2="16" y2="21"></line>
                                 <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -489,25 +748,29 @@
                         samorządzie lub interesuje się polityką lokalną — niezależnie od przynależności partyjnej.</p>
                     <ul class="join-benefits">
                         <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                                height="20">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                             Dostęp do sieci kontaktów w całej Polsce
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                                height="20">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                             Bezpłatne szkolenia i warsztaty
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                                height="20">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                             Program mentoringowy
                         </li>
                         <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                                height="20">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                             Udział w kongresach i konferencjach
@@ -545,7 +808,8 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             <span>Wyślij zgłoszenie</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
                                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
                             </svg>
                         </button>
@@ -578,7 +842,8 @@
                 <div class="contact-card animate-on-scroll visible">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
                             </path>
                         </svg>
                     </div>
@@ -639,7 +904,8 @@
         <div class="modal">
             <button class="modal-close" aria-label="Zamknij">×</button>
             <div class="modal-header" style="background: linear-gradient(135deg, #D4A847, #B8922E);">
-                <span class="section-tag" style="background: rgba(0,0,0,0.2); border-color: rgba(0,0,0,0.3); color: #0A1628;">Działania</span>
+                <span class="section-tag"
+                    style="background: rgba(0,0,0,0.2); border-color: rgba(0,0,0,0.3); color: #0A1628;">Działania</span>
                 <h2 style="color: #0A1628;">Program mentoringowy</h2>
             </div>
             <div class="modal-body">
@@ -774,7 +1040,8 @@
         <div class="modal">
             <button class="modal-close" aria-label="Zamknij">×</button>
             <div class="modal-header" style="background: linear-gradient(135deg, #D4A847, #B8922E);">
-                <span class="section-tag" style="background: rgba(0,0,0,0.2); border-color: rgba(0,0,0,0.3); color: #0A1628;">Współpraca</span>
+                <span class="section-tag"
+                    style="background: rgba(0,0,0,0.2); border-color: rgba(0,0,0,0.3); color: #0A1628;">Współpraca</span>
                 <h2 style="color: #0A1628;">Nowe partnerstwo z Fundacją Rozwoju</h2>
             </div>
             <div class="modal-body">
@@ -806,8 +1073,10 @@
                     <a href="#hero" class="nav-logo footer-logo">
                         <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="25" cy="25" r="23" fill="none" stroke="#D4A847" stroke-width="2"></circle>
-                            <path d="M30 12C26 12 22 14 20 17C18 20 18 24 20 27L25 34L30 27C32 24 32 20 30 17" fill="none" stroke="#D4A847" stroke-width="2.5" stroke-linecap="round"></path>
-                            <path d="M15 28C17 32 21 36 25 38C29 36 33 32 35 28" fill="none" stroke="#D4A847" stroke-width="2" stroke-linecap="round"></path>
+                            <path d="M30 12C26 12 22 14 20 17C18 20 18 24 20 27L25 34L30 27C32 24 32 20 30 17"
+                                fill="none" stroke="#D4A847" stroke-width="2.5" stroke-linecap="round"></path>
+                            <path d="M15 28C17 32 21 36 25 38C29 36 33 32 35 28" fill="none" stroke="#D4A847"
+                                stroke-width="2" stroke-linecap="round"></path>
                             <circle cx="25" cy="22" r="3" fill="#D4A847"></circle>
                         </svg>
                         <span class="logo-text">Samorząd <span class="logo-accent">dla Młodych</span></span>
@@ -850,13 +1119,15 @@
                         </a>
                         <a href="#" class="social-icon" aria-label="Twitter/X">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
                                 </path>
                             </svg>
                         </a>
                         <a href="#" class="social-icon" aria-label="LinkedIn">
                             <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
                                 </path>
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
@@ -873,12 +1144,12 @@
     </footer>
 
     <script src="js/encryption.js"></script>
-    <script src="js/config.js?v=4"></script>
-    <script src="js/main.js?v=4"></script>
+    <script src="js/config.js?v=5"></script>
+    <script src="js/main.js?v=5"></script>
 
 
     <div class="nav-overlay"></div>
-    
+
     <div class="modal-overlay" id="modal-new-1771547995156">
         <div class="modal">
             <button class="modal-close" aria-label="Zamknij">×</button>
@@ -1031,35 +1302,37 @@
         </div>
     </div>
     <div class="nav-overlay"></div>
-    
 
 
-<div class="nav-overlay"></div>
-        <div class="login-modal" id="loginModal">
-            <div class="login-box">
-                <h3>Logowanie Administratora (v4)</h3>
-                <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
-                    Wpisz hasło "admin" lub swój Token GitHub.
-                </p>
-                <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
-                <div class="login-actions">
-                    <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
-                    <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
-                </div>
-            </div>
-        </div>
+
     <div class="nav-overlay"></div>
-        <div class="login-modal" id="loginModal">
-            <div class="login-box">
-                <h3>Logowanie Administratora (v4)</h3>
-                <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
-                    Wpisz hasło "admin" lub swój Token GitHub.
-                </p>
-                <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
-                <div class="login-actions">
-                    <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
-                    <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
-                </div>
+    <div class="login-modal" id="loginModal">
+        <div class="login-box">
+            <h3>Logowanie Administratora (v4)</h3>
+            <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
+                Wpisz hasło "admin" lub swój Token GitHub.
+            </p>
+            <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
+            <div class="login-actions">
+                <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
+                <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
             </div>
         </div>
-    </body><app-ls-content ng-version="17.3.7"></app-ls-content></html>
+    </div>
+    <div class="nav-overlay"></div>
+    <div class="login-modal" id="loginModal">
+        <div class="login-box">
+            <h3>Logowanie Administratora (v4)</h3>
+            <p style="font-size: 0.9em; color: var(--color-gray); margin-bottom: 15px;">
+                Wpisz hasło "admin" lub swój Token GitHub.
+            </p>
+            <input type="password" id="adminPassword" class="login-input" placeholder="Hasło lub Token...">
+            <div class="login-actions">
+                <button class="btn btn-secondary" id="cancelLogin">Anuluj</button>
+                <button class="btn btn-primary" id="confirmLogin">Zaloguj</button>
+            </div>
+        </div>
+    </div>
+</body><app-ls-content ng-version="17.3.7"></app-ls-content>
+
+</html>
