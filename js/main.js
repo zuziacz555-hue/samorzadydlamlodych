@@ -546,6 +546,9 @@ function addTileButtons() {
         const grid = document.querySelector(gridInfo.selector);
         if (!grid) return;
 
+        // Prevent duplicates
+        if (grid.querySelector('.admin-add-btn')) return;
+
         const btn = document.createElement('button');
         btn.className = 'admin-add-btn';
         btn.textContent = '+ Dodaj kafelek';
