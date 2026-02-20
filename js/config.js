@@ -1,11 +1,11 @@
 /**
  * Global Configuration for Admin Access
- * Last Updated: 20.02.2026, 02:44:52
+ * Last Updated: 20.02.2026, 02:45:16
  */
 window.SITE_CONFIG = {
     auth: {
-    "cipher": "uRUHt6EJRTh2Rxcq66k+Rl8DEI6zrW0ZH6Xp2tGXqmUytFaioJRgJJfJf8+8Cr5+xrcZeKkpUzE=",
-    "iv": "+WCJLTByTd/0X3Jr",
-    "salt": "fbeec39c-ef76-499a-aa84-ea33570c1766"
+    "cipher": "EzE+hZJZigaqpNvI/NiAz1CEegI7lxZ3O+xqU7dbh43+ypWoGToos7XX0CnBwgRFBxLSxs9ZN/k=",
+    "iv": "E/GBkUHsLKDBeeJz",
+    "salt": "891962ac-36ff-4216-a1c5-27bcecd1b18a"
 }
 };
